@@ -10,8 +10,6 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
   body {
-    background-color: #235390;
-    background-image: url("//d35aaqx5ub95lt.cloudfront.net/images/star-pattern.svg");
     #root {
       height: 100%;
     }

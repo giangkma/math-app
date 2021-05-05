@@ -5,6 +5,7 @@ import {
     LoginScreen,
     RegisterScreen,
     ClassroomDetailScreen,
+    HomeScreen,
 } from 'src/view/screens';
 import {
     ConfirmRedirectRoute,
@@ -13,6 +14,7 @@ import {
 } from './ControlledRoute';
 
 export enum Screen {
+    Home = '/',
     Login = '/login',
     Register = '/Register',
     Classrooms = '/classrooms',
@@ -22,6 +24,10 @@ const Router: FC = () => {
     return (
         <BrowserRouter>
             <Switch>
+                <PublicOnlyRoute exact path={Screen.Home}>
+                    <HomeScreen />
+                </PublicOnlyRoute>
+
                 <PublicOnlyRoute path={Screen.Login}>
                     <LoginScreen />
                 </PublicOnlyRoute>

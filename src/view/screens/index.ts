@@ -1,3 +1,4 @@
+export { Home as HomeScreen } from './Home';
 export { Login as LoginScreen } from './Auth/Login';
 export { Register as RegisterScreen } from './Auth/Register';
 export { Classrooms as ClassroomsScreen } from './Classrooms';

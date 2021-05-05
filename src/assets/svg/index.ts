@@ -10,6 +10,10 @@ import { ReactComponent as TickWhiteIconSVG } from './tick-white.svg';
 import { ReactComponent as TickGreenIconSVG } from './tick-green.svg';
 import { ReactComponent as SearchIconSVG } from './search-icon.svg';
 import { ReactComponent as HandIconSVG } from './hand-icon.svg';
+import { ReactComponent as BackgroundStarsSVG } from './background-stars.svg';
+import { ReactComponent as CloudIconSVG } from './cloud.svg';
+import { ReactComponent as EarthIconSVG } from './earth.svg';
+import { ReactComponent as Satellite4IconSVG } from './satellite4.svg';
 
 export {
     BarIconSVG,
@@ -24,4 +28,8 @@ export {
     SearchIconSVG,
     TickGreenIconSVG,
     HandIconSVG,
+    BackgroundStarsSVG,
+    CloudIconSVG,
+    EarthIconSVG,
+    Satellite4IconSVG,
 };
