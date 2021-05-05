@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.tooltip-question {
+    position: relative;
+    border: 2px solid #e5e5e5;
+    z-index: 2;
+    background: #fff;
+}
+
+.tooltip-question::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 15px;
+    height: 15px;
+    border-left: 2px solid #e5e5e5;
+    z-index: 0;
+    border-bottom: 2px solid #e5e5e5;
+    background: #ffffff;
+}
+
+.categoryChips::-webkit-scrollbar {
+    display: none;
+}
+
+.confirmationText {
+    position: absolute;
+    bottom: 25%;
+}
+
+.line-clamp-4 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+
+.new-form-container {
+    width: 460px;
+}
+
+.swal2-popup.swal2-toast {
+    box-shadow: none !important;
+}

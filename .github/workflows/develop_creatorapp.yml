@@ -1,0 +1,37 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy react creator app to Azure Web App - creatorapp
+
+on:
+    push:
+        branches:
+            - develop
+    workflow_dispatch:
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            # This step checks out a copy of your repository.
+            - uses: actions/checkout@v2
+
+            #   https://docs.microsoft.com/en-us/azure/app-service/deploy-container-github-action?tabs=publish-profile#configure-github-secrets-for-your-registry
+            - uses: azure/docker-login@v1
+              with:
+                  login-server: samlaregistry.azurecr.io
+                  username: ${{ secrets.REGISTRY_USERNAME }}
+                  password: ${{ secrets.REGISTRY_PASSWORD }}
+
+            #   build docker image
+            - run: |
+                  docker build . -t samlaregistry.azurecr.io/creatorapp:${{ github.sha }}
+                  docker push samlaregistry.azurecr.io/creatorapp:${{ github.sha }}
+
+            #   https://docs.microsoft.com/en-us/azure/app-service/deploy-container-github-action?tabs=publish-profile#configure-the-github-secret-for-authentication
+            - uses: azure/webapps-deploy@v2
+              with:
+                  app-name: 'creatorapp'
+                  publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+                  images: 'samlaregistry.azurecr.io/creatorapp:${{ github.sha }}'
