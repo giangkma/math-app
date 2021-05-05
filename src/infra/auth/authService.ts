@@ -25,18 +25,20 @@ export class AuthService {
         this.apiService = apiService;
     }
 
-    login(data: DataLogin): Promise<ResponseAuth> {
-        return this.apiService.post({
+    async login(data: DataLogin): Promise<ResponseAuth> {
+        const res = await this.apiService.post({
             url: 'auth/login',
             data,
         });
+        return res.json();
     }
 
-    register(data: DataRegister): Promise<ResponseAuth> {
-        return this.apiService.post({
+    async register(data: DataRegister): Promise<ResponseAuth> {
+        const res = await this.apiService.post({
             url: 'auth/register',
             data,
         });
+        return res.json();
     }
 
     getUserProfile(token: string): Promise<User> {

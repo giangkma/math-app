@@ -22,7 +22,7 @@ export const Ranks: FC<IProps> = () => {
 
     return (
         <div className="relative shadow-xl border-2 border-darkGray w-full h-full col-span-1 rounded-2xl ">
-            <Spinner loading={isValidating} />
+            <Spinner className="rounded-xl" loading={isValidating} />
             <Alert
                 isSuccess={isSuccess}
                 message={error || message}
