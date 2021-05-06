@@ -26,7 +26,7 @@ export const PrivateRoute: FC<Props> = ({
 }) => {
     const isAuthenticated = useAuthenticated();
     const isAcceptedRole = useRoleUserAuthenticated(requiredRoles);
-
+    console.log(isAuthenticated);
     return (
         <Route {...props}>
             {isAuthenticated && isAcceptedRole ? (

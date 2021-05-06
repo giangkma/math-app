@@ -14,6 +14,8 @@ import { Alert } from 'src/view/components/alert';
 import { Spinner } from 'src/view/components/loading/Spinner';
 import { useMessageData } from 'src/view/hooks/message';
 import { useQuestions } from 'src/view/hooks/questions';
+import { Theme1 } from 'src/view/layout/components/Theme1';
+import { DefaultLayout } from 'src/view/layout/DefaultLayout';
 import { Screen } from 'src/view/routes/Router';
 
 type ParamType = {
@@ -129,7 +131,8 @@ export const ClassroomDetail: FC<{}> = () => {
     }, [onRandomQuestion]);
 
     return (
-        <>
+        <DefaultLayout>
+            <Theme1 />
             <Spinner loading={loading || isValidating} />
             <Link to={Screen.Classrooms}>
                 <div className="m-6 cursor-pointer absolute right-0 top-0">
@@ -137,12 +140,12 @@ export const ClassroomDetail: FC<{}> = () => {
                 </div>
             </Link>
             {questions && (
-                <div className="text-center text-woodyBrown mt-20 mx-40">
+                <div className="text-center relative text-woodyBrown mt-20 xl:mx-56 lg:mx-40 md:mx-32 sm:mx-20 mx-6 ">
                     <div className="flex items-center">
-                        <div className="w-32">
+                        <div className="xs:w-32 w-24">
                             <PersonIconSVG />
                         </div>
-                        <div className="p-4 text-2xl rounded-2xl tooltip-question">
+                        <div className="p-4 sm:text-2xl xs:text-xl text-base rounded-2xl tooltip-question">
                             Câu {sum} : {question.question}
                         </div>
                     </div>
@@ -151,12 +154,12 @@ export const ClassroomDetail: FC<{}> = () => {
                         message={error || message}
                         clearMessage={clearMessage}
                     />
-                    <div className="grid grid-cols-2 gap-8 p-10 border-1.6px border-mongooseGray rounded-xl">
+                    <div className="grid xs:grid-cols-2 grid-cols-1 z-50 sm:gap-8 xs:gap-6 gap-4 xs:p-10 p-6 border-1.6px border-mongooseGray rounded-xl">
                         {question.answer.map(item => {
                             return (
                                 <button
                                     key={item}
-                                    className={`rounded-10px outline-none rounded-lg focus:outline-none border-2 border-b-4 border-gray-500 bg-white mx-3 transition duration-150 ${answerSelected ===
+                                    className={`rounded-10px outline-none rounded-lg focus:outline-none border-2 border-b-4 border-gray-500 bg-white sm:mx-3 transition duration-150 ${answerSelected ===
                                         item &&
                                         'bg-brightGreen border-oliveGreen text-white'} ${isCheckedAnswer &&
                                         !isCorrectAnswer &&
@@ -168,7 +171,7 @@ export const ClassroomDetail: FC<{}> = () => {
                                     type="button"
                                     onClick={(): void => onSelectAnswer(item)}
                                 >
-                                    <div className="px-20 py-3 text-2xl">
+                                    <div className="md:px-20 sm:px-12 xs:px-8 px-4 xs:py-3 py-2 sm:text-2xl xs:text-xl text-lg">
                                         {item}
                                     </div>
                                 </button>
@@ -178,26 +181,26 @@ export const ClassroomDetail: FC<{}> = () => {
                 </div>
             )}
             <div
-                className={`absolute bottom-0 px-20 pt-12 pb-10 border-t-2 border-mongooseGray w-full flex items-center justify-between ${isCheckedAnswer &&
+                className={`absolute bottom-0 lg:px-32 md:px-20 sm:px-16 px-5 sm:pt-12 xs:pt-8 pt-6 sm:pb-10 pb-6 border-t-2 border-mongooseGray w-full flex items-center justify-between ${isCheckedAnswer &&
                     (isCorrectAnswer ? 'bg-creamWhite' : 'bg-mistyRose')}`}
             >
                 {isCheckedAnswer ? (
                     isCorrectAnswer ? (
                         <div className="flex items-center">
-                            <TickGreenIconSVG className="w-16 h-16 mr-6" />
-                            <p className="text-3xl font-black text-oliveGreen">
+                            <TickGreenIconSVG className="sm:w-16 sm:h-16 xs:w-12 xs:h-12 h-10 w-10 sm:mr-6 mr-3" />
+                            <p className="sm:text-3xl xs:text-2xl text-xl font-black text-oliveGreen">
                                 Rất giỏi !
                             </p>
                         </div>
                     ) : (
                         <div className="flex items-center">
-                            <WarningIconSVG className="w-16 h-16 mr-6" />
+                            <WarningIconSVG className="sm:w-16 sm:h-16 xs:w-12 xs:h-12 h-10 w-10 sm:mr-6 mr-3" />
                             <div className="flex flex-col items-start justify-center">
-                                <p className="text-3xl font-black text-alizarinRed">
+                                <p className="sm:text-3xl xs:text-2xl text-xl font-black text-alizarinRed">
                                     Sai rồi !
                                 </p>
-                                <p className="text-2xl font-black text-alizarinRed">
-                                    Đáp án chính xác là : {correctAnswer}
+                                <p className="sm:text-2xl xs:text-xl text-base font-black text-alizarinRed">
+                                    Đáp án là : {correctAnswer}
                                 </p>
                             </div>
                         </div>
@@ -205,7 +208,8 @@ export const ClassroomDetail: FC<{}> = () => {
                 ) : (
                     <button
                         type="button"
-                        className="px-12 py-2 text-xl outline-none focus:outline-none border-2 text-white hover:bg-darkGray hover:bg-opacity-25 border-b-4 font-bold border-mongooseGray rounded-lg"
+                        onClick={onRandomQuestion}
+                        className="ss:px-12 px-6 py-2 xs:text-xl text-base outline-none focus:outline-none border-2 text-white hover:bg-darkGray hover:bg-opacity-25 border-b-4 font-bold border-mongooseGray rounded-lg"
                     >
                         Bỏ qua
                     </button>
@@ -223,11 +227,11 @@ export const ClassroomDetail: FC<{}> = () => {
                             : answerSelected
                             ? 'bg-brightGreen  border-b-4 border-oliveGreen text-white'
                             : 'bg-mongooseGray text-darkGray pointer-events-none'
-                    }  px-12 py-2 text-xl border-2 outline-none focus:outline-none border-b-4 font-bold border-mongooseGray rounded-lg`}
+                    }  ss:px-12 px-6 py-2 xs:text-xl text-base border-2 outline-none focus:outline-none border-b-4 font-bold border-mongooseGray rounded-lg`}
                 >
                     {isCheckedAnswer ? 'Tiếp tục' : 'Kiểm tra'}
                 </button>
             </div>
-        </>
+        </DefaultLayout>
     );
 };

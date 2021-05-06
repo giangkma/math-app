@@ -34,6 +34,7 @@ module.exports = {
                 75: '18.75rem',
                 125: '31.25rem',
                 195: '48.75rem',
+                '400px': '400px',
             },
             maxWidth: {},
             minWidth: {},
@@ -52,12 +53,7 @@ module.exports = {
             inset: {
                 '1/2': '50%',
             },
-            boxShadow: {
-                card:
-                    ' -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.671)',
-                'card-active':
-                    'inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, 0.671)',
-            },
+            boxShadow: {},
             borderColor: {},
             borderRadius: {
                 '12px': '12px',
@@ -66,11 +62,21 @@ module.exports = {
                 '30px': '30px',
             },
             gap: {},
-            zIndex: {},
+            zIndex: {
+                '-1': '-1',
+            },
             gradientColorStops: {
                 blackGradient: '#00000099',
             },
             keyframes: {},
+            screens: {
+                ss: '376px',
+                xs: '426px',
+                sm: '641px',
+                md: '769px',
+                lg: '1025px',
+                xl: '1281px',
+            },
         },
     },
     variants: {

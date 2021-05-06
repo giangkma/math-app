@@ -1,8 +1,10 @@
 import { yupResolver } from '@hookform/resolvers';
+import { ParallaxLayer } from '@react-spring/parallax';
 import { default as React, FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { CloudIconSVG, EarthIconSVG } from 'src/assets/svg';
 import { DataRegister } from 'src/domain/user';
 import { RegisterForm, RegisterFormSchema } from 'src/domain/user/schema';
 import { showToatify } from 'src/helper/toat';
@@ -14,11 +16,14 @@ import { InputText } from 'src/view/components/input/InputText';
 import { Spinner } from 'src/view/components/loading/Spinner';
 import { Logo } from 'src/view/components/Logo';
 import { useMessageData } from 'src/view/hooks/message';
+import { Theme2 } from 'src/view/layout/components/Theme2';
 import { DefaultLayout } from 'src/view/layout/DefaultLayout';
 import { Screen } from 'src/view/routes/Router';
 
 export const Register: FC = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
+
     const { isSuccess, message, setMessage, clearMessage } = useMessageData();
 
     const [loading, setLoading] = useState<boolean>(false);
@@ -32,7 +37,8 @@ export const Register: FC = () => {
             setLoading(true);
 
             await dispatch(UserThunks.onRegisterThunk(data));
-            showToatify('success', 'Đăng ký thành công, chào mừng bạn !');
+            showToatify('success', 'Chào mừng bạn !');
+            history.push(Screen.Classrooms);
         } catch (error) {
             setMessage({ message: error.message });
         } finally {
@@ -41,9 +47,10 @@ export const Register: FC = () => {
     };
     return (
         <DefaultLayout>
+            <Theme2 />
             <div className="bg-woodyBrown h-full ">
                 <Spinner loading={loading} />
-                <div className=" absolute top-0 w-full item-center justify-between p-5 lg:p-10">
+                <div className=" absolute flex top-0 w-full item-center justify-between p-5 lg:p-10">
                     <Logo />
                     <div className="sm:block hidden">
                         <Link to={Screen.Login}>

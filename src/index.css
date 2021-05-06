@@ -51,3 +51,27 @@ body {
 .swal2-popup.swal2-toast {
     box-shadow: none !important;
 }
+
+.default-layout > div {
+    overflow: hidden !important;
+}
+
+.sidebar {
+    background: #191819;
+}
+
+.card-classroom {
+    width: 12rem;
+}
+
+@media (min-width: 375px) and (max-width: 425px) {
+    .card-classroom {
+        width: 10rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .card-classroom {
+        width: 8rem;
+    }
+}

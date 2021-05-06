@@ -16,7 +16,7 @@ import {
 export enum Screen {
     Home = '/',
     Login = '/login',
-    Register = '/Register',
+    Register = '/register',
     Classrooms = '/classrooms',
 }
 

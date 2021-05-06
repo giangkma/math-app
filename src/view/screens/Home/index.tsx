@@ -3,8 +3,10 @@ import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { config } from 'react-spring';
+import MatTrangIMG from 'src/assets/images/mattrang.png';
+import SaoBangIMG from 'src/assets/images/saobang.png';
+import MayBayIMG from 'src/assets/images/maybay.png';
 import { CloudIconSVG, EarthIconSVG, Satellite4IconSVG } from 'src/assets/svg';
-import { urlImage } from 'src/utils/stringUtils';
 import { PrimaryButton } from 'src/view/components/button/PrimaryButton';
 import { Logo } from 'src/view/components/Logo';
 import { Screen } from 'src/view/routes/Router';
@@ -17,6 +19,19 @@ const Decoration = () => (
             style={{ pointerEvents: 'none' }}
         >
             <Satellite4IconSVG style={{ width: '15%', marginLeft: '70%' }} />
+        </ParallaxLayer>
+        <ParallaxLayer offset={0.15} speed={0.4} style={{ opacity: 0.9 }}>
+            <img src={MatTrangIMG} style={{ marginLeft: '20%' }} alt="" />
+        </ParallaxLayer>
+        <ParallaxLayer offset={0.45} speed={0.3} style={{ opacity: 0.9 }}>
+            <img src={SaoBangIMG} style={{ marginLeft: '70%' }} alt="" />
+        </ParallaxLayer>
+        <ParallaxLayer offset={0.25} speed={0.3} style={{ opacity: 1 }}>
+            <img
+                src={MayBayIMG}
+                style={{ width: '10%', marginLeft: '40%' }}
+                alt=""
+            />
         </ParallaxLayer>
         <ParallaxLayer offset={0} speed={0.8} style={{ opacity: 0.1 }}>
             <CloudIconSVG
@@ -41,6 +56,9 @@ const Decoration = () => (
             <CloudIconSVG
                 style={{ display: 'block', width: '20%', marginLeft: '40%' }}
             />
+        </ParallaxLayer>
+        <ParallaxLayer offset={1.6} speed={0.3} style={{ opacity: 0.9 }}>
+            <img src={SaoBangIMG} style={{ marginLeft: '10%' }} alt="" />
         </ParallaxLayer>
         <ParallaxLayer offset={1} speed={0.8} style={{ opacity: 0.1 }}>
             <CloudIconSVG

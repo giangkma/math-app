@@ -25,7 +25,7 @@ export const Ranks: FC<IProps> = () => {
             <Spinner className="rounded-xl" loading={isValidating} />
             <Alert
                 isSuccess={isSuccess}
-                message={error || message}
+                message={message}
                 clearMessage={clearMessage}
             />
             <h1 className="p-2 pl-4 w-full text-left border-b border-white border-opacity-25 text-2xl text-white">
@@ -60,6 +60,7 @@ export const Ranks: FC<IProps> = () => {
                     ranks.map((item, index) => {
                         return (
                             <div
+                                key={item._id}
                                 className={`grid grid-cols-5 text-center text-white mb-1 text-lg  py-2 rounded-lg ${item._id ===
                                     user?._id && 'bg-dodgerBlue'}`}
                             >

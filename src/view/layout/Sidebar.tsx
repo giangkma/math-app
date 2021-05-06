@@ -16,7 +16,7 @@ export const Sidebar: FC<IProps> = ({ isOpenSidebar, onToggleSidebar }) => {
 
     return (
         <div
-            className={`w-56 z-50 transition transform duration-300 h-full fixed top-0 right-0 bg-gray-800 ${!isOpenSidebar &&
+            className={`sidebar w-56 z-50 transition transform duration-300 h-full fixed top-0 right-0 ${!isOpenSidebar &&
                 'translate-x-56'}`}
         >
             <div className="w-full">
