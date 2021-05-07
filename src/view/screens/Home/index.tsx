@@ -29,7 +29,8 @@ const Decoration = () => (
         <ParallaxLayer offset={0.25} speed={0.3} style={{ opacity: 1 }}>
             <img
                 src={MayBayIMG}
-                style={{ width: '10%', marginLeft: '40%' }}
+                style={{ marginLeft: '40%' }}
+                className="md:w-40 w-32"
                 alt=""
             />
         </ParallaxLayer>

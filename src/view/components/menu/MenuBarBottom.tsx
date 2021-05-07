@@ -1,25 +1,38 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
+import {
+    HomeActiveIconSVG,
+    HomeInActiveIconSVG,
+    MessageActiveIconSVG,
+    MessageInActiveIconSVG,
+    PersonActiveIconSVG,
+    PersonInActiveIconSVG,
+    StoreActiveIconSVG,
+    StoreInActiveIconSVG,
+} from 'src/assets/svg';
+import { Screen } from 'src/view/routes/Router';
 
 interface Props {
     active?: boolean;
-    icon: string;
-    label: string;
+    icon: any;
+    iconActive: any;
+    label?: string;
     to?: string;
 }
 
 const TabBarItem: FC<Props> = ({
     active,
-    icon,
+    icon: Icon,
+    iconActive: IconActive,
     label,
-    to = '/coming-soon',
+    to = '#',
 }) => (
     <Link to={to}>
         <div className="col-span-3 flex items-center justify-center flex-col">
-            <img alt="" className="mb-6px" src={icon} />
+            {active ? <IconActive /> : <Icon />}
             <div
                 className={`text-xs leading-14px ${
-                    active ? 'text-orange-sea-buckthorn' : 'text-grey-silver'
+                    active ? 'text-white' : 'text-gray-600'
                 }`}
             >
                 {label}
@@ -29,26 +42,43 @@ const TabBarItem: FC<Props> = ({
 );
 
 export const MenuBarBottom: FC = () => {
+    const isClasroomsPage = useRouteMatch(Screen.Classrooms);
+    const isRanksPage = useRouteMatch(Screen.Ranks);
+    const isMessagePage = useRouteMatch(Screen.Message);
+    const isAccountPage = useRouteMatch(Screen.Account);
+
     return (
-        <div className="fixed bottom-0 z-1001 h-54px grid grid-cols-12 w-screen bg-white border-t-1 border-white-1">
-            <TabBarItem
-                active
-                icon="src/assets/svg/home-active.svg"
-                label="Home"
-            />
-            <TabBarItem
-                icon="src/assets/svg/message-inactive.svg"
-                label="Message"
-            />
-            <TabBarItem
-                icon="src/assets/svg/shopping-cart-inactive.svg"
-                to="/shopping-cart"
-                label="Message"
-            />
-            <TabBarItem
-                icon="src/assets/svg/account-inactive.svg"
-                label="My Account"
-            />
+        <div className="mt-40">
+            <div className="fixed md:hidden bottom-0 py-4  grid grid-cols-4 w-screen bg-black bg-opacity-75 border-t-2 border-gray-800">
+                <TabBarItem
+                    to={Screen.Classrooms}
+                    active={!!isClasroomsPage}
+                    icon={HomeInActiveIconSVG}
+                    iconActive={HomeActiveIconSVG}
+                    label="Lớp học"
+                />
+                <TabBarItem
+                    to={Screen.Message}
+                    active={!!isMessagePage}
+                    label="Trò chuyện"
+                    icon={MessageInActiveIconSVG}
+                    iconActive={MessageActiveIconSVG}
+                />
+                <TabBarItem
+                    to={Screen.Ranks}
+                    active={!!isRanksPage}
+                    label="Xếp hạng"
+                    icon={StoreInActiveIconSVG}
+                    iconActive={StoreActiveIconSVG}
+                />
+                <TabBarItem
+                    active={!!isAccountPage}
+                    to={Screen.Account}
+                    label="Cá nhân"
+                    icon={PersonInActiveIconSVG}
+                    iconActive={PersonActiveIconSVG}
+                />
+            </div>
         </div>
     );
 };

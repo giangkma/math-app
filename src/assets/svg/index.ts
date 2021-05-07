@@ -15,6 +15,15 @@ import { ReactComponent as CloudIconSVG } from './cloud.svg';
 import { ReactComponent as EarthIconSVG } from './earth.svg';
 import { ReactComponent as Satellite4IconSVG } from './satellite4.svg';
 
+import { ReactComponent as HomeActiveIconSVG } from './home-active.svg';
+import { ReactComponent as HomeInActiveIconSVG } from './home-inactive.svg';
+import { ReactComponent as MessageActiveIconSVG } from './message-active.svg';
+import { ReactComponent as MessageInActiveIconSVG } from './message-inactive.svg';
+import { ReactComponent as StoreActiveIconSVG } from './store-active.svg';
+import { ReactComponent as StoreInActiveIconSVG } from './store-inactive.svg';
+import { ReactComponent as PersonActiveIconSVG } from './person-active.svg';
+import { ReactComponent as PersonInActiveIconSVG } from './person-inactive.svg';
+
 export {
     BarIconSVG,
     CloseIconSVG,
@@ -32,4 +41,12 @@ export {
     CloudIconSVG,
     EarthIconSVG,
     Satellite4IconSVG,
+    HomeActiveIconSVG,
+    HomeInActiveIconSVG,
+    MessageActiveIconSVG,
+    MessageInActiveIconSVG,
+    StoreActiveIconSVG,
+    StoreInActiveIconSVG,
+    PersonActiveIconSVG,
+    PersonInActiveIconSVG,
 };

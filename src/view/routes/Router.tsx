@@ -6,6 +6,9 @@ import {
     RegisterScreen,
     ClassroomDetailScreen,
     HomeScreen,
+    RanksScreen,
+    MessageScreen,
+    AccountScreen,
 } from 'src/view/screens';
 import {
     ConfirmRedirectRoute,
@@ -15,6 +18,9 @@ import {
 
 export enum Screen {
     Home = '/',
+    Ranks = '/ranks',
+    Message = '/message',
+    Account = '/account',
     Login = '/login',
     Register = '/register',
     Classrooms = '/classrooms',
@@ -35,6 +41,18 @@ const Router: FC = () => {
                 <PublicOnlyRoute path={Screen.Register}>
                     <RegisterScreen />
                 </PublicOnlyRoute>
+
+                <PrivateRoute exact path={Screen.Ranks}>
+                    <RanksScreen />
+                </PrivateRoute>
+
+                <PrivateRoute exact path={Screen.Message}>
+                    <MessageScreen />
+                </PrivateRoute>
+
+                <PrivateRoute exact path={Screen.Account}>
+                    <AccountScreen />
+                </PrivateRoute>
 
                 <PrivateRoute exact path={Screen.Classrooms}>
                     <ClassroomsScreen />

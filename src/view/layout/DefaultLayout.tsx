@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 
 export const DefaultLayout: FC = ({ children }) => {
     return (
-        <div className="default-layout">
+        <div className="default-layout pb-40">
             <Parallax pages={1} config={config.slow}>
                 <ParallaxLayer
                     id="page-1"

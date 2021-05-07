@@ -22,7 +22,7 @@ export const Classrooms: FC<IProps> = () => {
             <Theme3 />
             <div className="h-screen relative overflow-y-auto">
                 <Header />
-                <div className="grid grid-cols-1 xl:grid-cols-3 md:grid-cols-5 mt-8 xl:px-16 md:px-10 xs:px-8 px-4 pb-12">
+                <div className="grid grid-cols-1 xl:grid-cols-3 md:grid-cols-5 mt-8 xl:px-16 md:px-10 xs:px-8 px-4 md:pb-12 sm:pb-40 pb-12">
                     <div className="mx-auto xl:col-span-2 md:col-span-3 xl:w-400px">
                         <div className="flex items-center justify-between xs:gap-8 gap-5">
                             <CardClassroom classroom={dataClassrooms[0]} />

@@ -42,7 +42,7 @@ export const Ranks: FC<IProps> = () => {
                                     : 'blue'
                             }
                             title={`Lớp ${classroom.nameClass}`}
-                            className="px-4 text-base"
+                            className="md:px-3 lg:px-4 text-base"
                             onClick={(): void =>
                                 setClassSelected(classroom.nameClass)
                             }
