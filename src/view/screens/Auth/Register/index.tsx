@@ -1,10 +1,8 @@
 import { yupResolver } from '@hookform/resolvers';
-import { ParallaxLayer } from '@react-spring/parallax';
 import { default as React, FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { CloudIconSVG, EarthIconSVG } from 'src/assets/svg';
 import { DataRegister } from 'src/domain/user';
 import { RegisterForm, RegisterFormSchema } from 'src/domain/user/schema';
 import { showToatify } from 'src/helper/toat';
@@ -64,12 +62,11 @@ export const Register: FC = () => {
                 </div>
                 <div className="text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
                     <div className="text-lightPeach text-xl">
-                        <h1 className="text-3xl">Đăng ký tài khoản</h1>
                         <h1>Hãy nhập đầy đủ thông tin !</h1>
                     </div>
                     <form
                         onSubmit={handleSubmit(onSubmit)}
-                        className="flex items-center justify-center w-full mt-6"
+                        className="flex items-center justify-center w-full mt-4"
                     >
                         <div className="w-75 text-xl">
                             <InputText

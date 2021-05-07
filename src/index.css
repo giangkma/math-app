@@ -36,7 +36,9 @@ body {
     position: absolute;
     bottom: 25%;
 }
-
+.menu-bottom {
+    background: linear-gradient(rgb(9, 1, 15), black);
+}
 .line-clamp-4 {
     overflow: hidden;
     display: -webkit-box;
@@ -66,12 +68,22 @@ body {
 
 @media (min-width: 375px) and (max-width: 425px) {
     .card-classroom {
-        width: 10rem;
+        width: 9rem;
     }
 }
 
 @media (max-width: 375px) {
     .card-classroom {
         width: 8rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .card-classroom {
+        width: 7rem;
+        padding: 0.6rem !important;
+    }
+    .card-classroom h1 {
+        font-size: 14px;
     }
 }

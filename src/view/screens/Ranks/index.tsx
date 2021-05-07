@@ -26,7 +26,7 @@ export const Ranks: FC = () => {
     return (
         <DefaultLayout>
             <Theme1 />
-            <div className="h-screen relative overflow-auto bg-black bg-opacity-50">
+            <div className="h-screen relative bg-black bg-opacity-50">
                 <Header />
                 <Spinner className="rounded-xl" loading={isValidating} />
                 <Alert
@@ -34,7 +34,7 @@ export const Ranks: FC = () => {
                     message={message}
                     clearMessage={clearMessage}
                 />
-                <div className="w-full h-full p-4">
+                <div className="w-full h-full overflow-y-auto pb-32 p-4">
                     <h1 className="p-2 pl-4 w-full text-left border-b border-white border-opacity-25 text-xl text-white">
                         Bảng xếp hạng
                     </h1>
@@ -49,7 +49,7 @@ export const Ranks: FC = () => {
                                             : 'blue'
                                     }
                                     title={`Lớp ${classroom.nameClass}`}
-                                    className="px-4 py-1 text-sm"
+                                    className="px-3 py-1 text-sm"
                                     onClick={(): void =>
                                         setClassSelected(classroom.nameClass)
                                     }
@@ -57,7 +57,7 @@ export const Ranks: FC = () => {
                             );
                         })}
                     </div>
-                    <div className="overflow-y-auto h-120  mx-2">
+                    <div className="overflow-y-auto pb-20 mx-2">
                         <div className="grid grid-cols-5 text-center text-white mb-2">
                             <p className="col-span-1">STT</p>
                             <p className="col-span-3">Tên</p>
@@ -90,8 +90,8 @@ export const Ranks: FC = () => {
                             })}
                     </div>
                 </div>
+                <MenuBarBottom />
             </div>
-            <MenuBarBottom />
         </DefaultLayout>
     );
 };

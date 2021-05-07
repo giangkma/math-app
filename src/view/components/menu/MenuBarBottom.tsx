@@ -48,37 +48,35 @@ export const MenuBarBottom: FC = () => {
     const isAccountPage = useRouteMatch(Screen.Account);
 
     return (
-        <div className="mt-40">
-            <div className="fixed md:hidden bottom-0 py-4  grid grid-cols-4 w-screen bg-black bg-opacity-75 border-t-2 border-gray-800">
-                <TabBarItem
-                    to={Screen.Classrooms}
-                    active={!!isClasroomsPage}
-                    icon={HomeInActiveIconSVG}
-                    iconActive={HomeActiveIconSVG}
-                    label="Lớp học"
-                />
-                <TabBarItem
-                    to={Screen.Message}
-                    active={!!isMessagePage}
-                    label="Trò chuyện"
-                    icon={MessageInActiveIconSVG}
-                    iconActive={MessageActiveIconSVG}
-                />
-                <TabBarItem
-                    to={Screen.Ranks}
-                    active={!!isRanksPage}
-                    label="Xếp hạng"
-                    icon={StoreInActiveIconSVG}
-                    iconActive={StoreActiveIconSVG}
-                />
-                <TabBarItem
-                    active={!!isAccountPage}
-                    to={Screen.Account}
-                    label="Cá nhân"
-                    icon={PersonInActiveIconSVG}
-                    iconActive={PersonActiveIconSVG}
-                />
-            </div>
+        <div className="menu-bottom fixed md:hidden bottom-0 py-4  grid grid-cols-4 w-screen border-t-2 border-gray-800">
+            <TabBarItem
+                to={Screen.Classrooms}
+                active={!!isClasroomsPage}
+                icon={HomeInActiveIconSVG}
+                iconActive={HomeActiveIconSVG}
+                label="Lớp học"
+            />
+            <TabBarItem
+                to={Screen.Message}
+                active={!!isMessagePage}
+                label="Trò chuyện"
+                icon={MessageInActiveIconSVG}
+                iconActive={MessageActiveIconSVG}
+            />
+            <TabBarItem
+                to={Screen.Ranks}
+                active={!!isRanksPage}
+                label="Xếp hạng"
+                icon={StoreInActiveIconSVG}
+                iconActive={StoreActiveIconSVG}
+            />
+            <TabBarItem
+                active={!!isAccountPage}
+                to={Screen.Account}
+                label="Cá nhân"
+                icon={PersonInActiveIconSVG}
+                iconActive={PersonActiveIconSVG}
+            />
         </div>
     );
 };
