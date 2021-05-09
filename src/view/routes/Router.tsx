@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
+import { UserRole } from 'src/domain/user';
 import {
     ClassroomsScreen,
     LoginScreen,
@@ -9,6 +10,7 @@ import {
     RanksScreen,
     MessageScreen,
     AccountScreen,
+    AddQuestionScreen,
 } from 'src/view/screens';
 import {
     ConfirmRedirectRoute,
@@ -18,6 +20,7 @@ import {
 
 export enum Screen {
     Home = '/',
+    AddQuestion = '/add-question',
     Ranks = '/ranks',
     Message = '/message',
     Account = '/account',
@@ -65,12 +68,12 @@ const Router: FC = () => {
                     <ClassroomDetailScreen />
                 </ConfirmRedirectRoute>
 
-                {/* <PrivateRoute
-                    requiredRoles={[UserRole.organization]}
-                    path={Screen.MyCreators}
+                <PrivateRoute
+                    requiredRoles={UserRole.teacher}
+                    path={Screen.AddQuestion}
                 >
-                    <MyCreatorsScreen />
-                </PrivateRoute> */}
+                    <AddQuestionScreen />
+                </PrivateRoute>
             </Switch>
         </BrowserRouter>
     );

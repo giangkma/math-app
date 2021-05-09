@@ -7,8 +7,8 @@ import {
     MessageInActiveIconSVG,
     PersonActiveIconSVG,
     PersonInActiveIconSVG,
-    StoreActiveIconSVG,
-    StoreInActiveIconSVG,
+    RanksActiveIconSVG,
+    RanksInActiveIconSVG,
 } from 'src/assets/svg';
 import { Screen } from 'src/view/routes/Router';
 
@@ -29,7 +29,11 @@ const TabBarItem: FC<Props> = ({
 }) => (
     <Link to={to}>
         <div className="col-span-3 flex items-center justify-center flex-col">
-            {active ? <IconActive /> : <Icon />}
+            {active ? (
+                <IconActive className="sm:w-12 sm:h-12 w-10 h-10" />
+            ) : (
+                <Icon className="sm:w-12 sm:h-12 w-10 h-10" />
+            )}
             <div
                 className={`text-xs leading-14px ${
                     active ? 'text-white' : 'text-gray-600'
@@ -48,7 +52,7 @@ export const MenuBarBottom: FC = () => {
     const isAccountPage = useRouteMatch(Screen.Account);
 
     return (
-        <div className="menu-bottom fixed md:hidden bottom-0 py-4  grid grid-cols-4 w-screen border-t-2 border-gray-800">
+        <div className="menu-bottom fixed md:hidden bottom-0 sm:py-4 py-2 grid grid-cols-4 w-screen border-t-2 border-gray-800">
             <TabBarItem
                 to={Screen.Classrooms}
                 active={!!isClasroomsPage}
@@ -67,8 +71,8 @@ export const MenuBarBottom: FC = () => {
                 to={Screen.Ranks}
                 active={!!isRanksPage}
                 label="Xếp hạng"
-                icon={StoreInActiveIconSVG}
-                iconActive={StoreActiveIconSVG}
+                icon={RanksInActiveIconSVG}
+                iconActive={RanksActiveIconSVG}
             />
             <TabBarItem
                 active={!!isAccountPage}

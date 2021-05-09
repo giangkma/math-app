@@ -2,14 +2,11 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import {
-    CloseIconSVG,
-    PersonIconSVG,
-    TickGreenIconSVG,
-    WarningIconSVG,
-} from 'src/assets/svg';
+import { CloseIconSVG, TickGreenIconSVG, WarningIconSVG } from 'src/assets/svg';
+
 import container from 'src/container';
 import { QuestionType } from 'src/domain/question';
+import { dataImagesPerson } from 'src/utils/dummy';
 import { Alert } from 'src/view/components/alert';
 import { Spinner } from 'src/view/components/loading/Spinner';
 import { useMessageData } from 'src/view/hooks/message';
@@ -27,6 +24,7 @@ const useCheckQuestion = () => {
         undefined,
     );
     const [sum, setSum] = useState<number>(1);
+    const [indexImage, setIndexImage] = useState<number>(0);
     const [isCheckedAnswer, setIsCheckedAnswer] = useState<boolean>(false);
     const [isCorrectAnswer, setIsCorrectAnswer] = useState<boolean>(false);
     const [correctAnswer, setCorrectAnswer] = useState<string | undefined>(
@@ -46,6 +44,8 @@ const useCheckQuestion = () => {
         setCorrectAnswer,
         loading,
         setLoading,
+        indexImage,
+        setIndexImage,
     };
 };
 
@@ -77,6 +77,8 @@ export const ClassroomDetail: FC<{}> = () => {
         setCorrectAnswer,
         loading,
         setLoading,
+        indexImage,
+        setIndexImage,
     } = useCheckQuestion();
 
     const { isSuccess, message, setMessage, clearMessage } = useMessageData();
@@ -85,11 +87,13 @@ export const ClassroomDetail: FC<{}> = () => {
 
     const onRandomQuestion = useCallback((): void => {
         if (!questions) return;
+        const indexImage = Math.floor(Math.random() * dataImagesPerson.length);
         const indexQuestion = Math.floor(Math.random() * questions.length);
+        setIndexImage(indexImage);
         setQuestion(questions[indexQuestion]);
         setIsCheckedAnswer(false);
         setAnswerSelected(undefined);
-    }, [questions, setAnswerSelected, setIsCheckedAnswer]);
+    }, [questions, setAnswerSelected, setIndexImage, setIsCheckedAnswer]);
 
     const onSelectAnswer = (answer: string): void => {
         setAnswerSelected(answer);
@@ -135,17 +139,19 @@ export const ClassroomDetail: FC<{}> = () => {
             <Theme1 />
             <Spinner loading={loading || isValidating} />
             <Link to={Screen.Classrooms}>
-                <div className="m-6 cursor-pointer absolute right-0 top-0">
-                    <CloseIconSVG className="w-6 h-6" />
+                <div className="sm:m-6 m-4 cursor-pointer absolute right-0 top-0">
+                    <CloseIconSVG className="sm:w-6 sm:h-6 w-4 h-4" />
                 </div>
             </Link>
             {questions && (
-                <div className="text-center relative text-woodyBrown mt-20 xl:mx-56 lg:mx-40 md:mx-32 sm:mx-20 mx-6 ">
-                    <div className="flex items-center">
-                        <div className="xs:w-32 w-24">
-                            <PersonIconSVG />
-                        </div>
-                        <div className="p-4 sm:text-2xl xs:text-xl text-base rounded-2xl tooltip-question">
+                <div className="text-center relative text-woodyBrown lg:mt-32 md:mt-24 mt-20 xl:mx-56 lg:mx-40 md:mx-32 sm:mx-20 mx-6 ">
+                    <div className="flex items-end">
+                        <img
+                            className="xs:w-32 w-24"
+                            src={dataImagesPerson[indexImage]}
+                            alt=""
+                        />
+                        <div className="p-4 mb-4 sm:text-2xl xs:text-xl text-base rounded-2xl tooltip-question">
                             Câu {sum} : {question.question}
                         </div>
                     </div>
@@ -154,7 +160,7 @@ export const ClassroomDetail: FC<{}> = () => {
                         message={error || message}
                         clearMessage={clearMessage}
                     />
-                    <div className="grid xs:grid-cols-2 grid-cols-1 z-50 sm:gap-8 xs:gap-6 gap-4 xs:p-10 p-6 border-1.6px border-mongooseGray rounded-xl">
+                    <div className="grid grid-cols-2 z-50 sm:gap-8 xs:gap-6 gap-4 xs:p-10 p-4 border-1.6px border-mongooseGray rounded-xl">
                         {question.answer.map(item => {
                             return (
                                 <button
@@ -171,7 +177,7 @@ export const ClassroomDetail: FC<{}> = () => {
                                     type="button"
                                     onClick={(): void => onSelectAnswer(item)}
                                 >
-                                    <div className="md:px-20 sm:px-12 xs:px-8 px-4 xs:py-3 py-2 sm:text-2xl xs:text-xl text-lg">
+                                    <div className="md:px-20 sm:px-12 xs:px-8 px-4 xs:py-3 py-1 sm:text-2xl xs:text-xl text-lg">
                                         {item}
                                     </div>
                                 </button>
@@ -188,7 +194,7 @@ export const ClassroomDetail: FC<{}> = () => {
                     isCorrectAnswer ? (
                         <div className="flex items-center">
                             <TickGreenIconSVG className="sm:w-16 sm:h-16 xs:w-12 xs:h-12 h-10 w-10 sm:mr-6 mr-3" />
-                            <p className="sm:text-3xl xs:text-2xl text-xl font-black text-oliveGreen">
+                            <p className="sm:text-3xl xs:text-2xl text-lg font-black text-oliveGreen">
                                 Rất giỏi !
                             </p>
                         </div>
@@ -196,7 +202,7 @@ export const ClassroomDetail: FC<{}> = () => {
                         <div className="flex items-center">
                             <WarningIconSVG className="sm:w-16 sm:h-16 xs:w-12 xs:h-12 h-10 w-10 sm:mr-6 mr-3" />
                             <div className="flex flex-col items-start justify-center">
-                                <p className="sm:text-3xl xs:text-2xl text-xl font-black text-alizarinRed">
+                                <p className="sm:text-3xl xs:text-2xl text-lg font-black text-alizarinRed">
                                     Sai rồi !
                                 </p>
                                 <p className="sm:text-2xl xs:text-xl text-base font-black text-alizarinRed">

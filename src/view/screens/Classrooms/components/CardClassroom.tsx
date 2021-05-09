@@ -11,7 +11,7 @@ export const CardClassroom: FC<IProps> = ({ classroom }) => {
     return (
         <Link to={`${Screen.Classrooms}/${classroom.nameClass}`}>
             <button
-                className={`card-classroom border-2  border-b-4 border-darkGray focus:outline-none cursor-pointer relative rounded-xl flex items-center justify-center xs:px-6 p-3`}
+                className={`card-classroom border-2  border-b-4 border-darkGray focus:outline-none cursor-pointer relative rounded-xl flex items-center justify-center xs:px-6 md:py-6 p-3`}
                 key={classroom.id}
             >
                 <div className="flex flex-col gap-4 ">
