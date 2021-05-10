@@ -134,6 +134,10 @@ export const ClassroomDetail: FC<{}> = () => {
         onRandomQuestion();
     }, [onRandomQuestion]);
 
+    const answerFilterDuplicate = question.answer.filter(
+        (item, index) => question.answer.indexOf(item) === index,
+    );
+
     return (
         <DefaultLayout>
             <Theme1 />
@@ -161,7 +165,7 @@ export const ClassroomDetail: FC<{}> = () => {
                         clearMessage={clearMessage}
                     />
                     <div className="grid grid-cols-2 z-50 sm:gap-8 xs:gap-6 gap-4 xs:p-10 p-4 border-1.6px border-mongooseGray rounded-xl">
-                        {question.answer.map(item => {
+                        {answerFilterDuplicate.map(item => {
                             return (
                                 <button
                                     key={item}
@@ -178,7 +182,9 @@ export const ClassroomDetail: FC<{}> = () => {
                                     onClick={(): void => onSelectAnswer(item)}
                                 >
                                     <div className="md:px-20 sm:px-12 xs:px-8 px-4 xs:py-3 py-1 sm:text-2xl xs:text-xl text-lg">
-                                        {item}
+                                        {item.length > 10
+                                            ? `${item.slice(0, 8)}...`
+                                            : item}
                                     </div>
                                 </button>
                             );

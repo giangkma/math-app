@@ -39,11 +39,11 @@ body {
 .menu-bottom {
     background: linear-gradient(rgb(9, 1, 15), black);
 }
-.line-clamp-4 {
+.line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 1;
 }
 
 .new-form-container {

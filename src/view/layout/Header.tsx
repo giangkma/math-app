@@ -1,10 +1,11 @@
 import React, { FC, useCallback, useState } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { ArrowBackIconSVG, BarIconSVG, HandIconSVG } from 'src/assets/svg';
+import { UserRole } from 'src/domain/user';
 import { getLastName } from 'src/utils/stringUtils';
 import { PrimaryButton } from '../components/button/PrimaryButton';
-import { AppModal } from '../components/modal/AppModal';
 import { useAuth } from '../hooks';
+import { useRoleUserAuthenticated } from '../hooks/role';
 import { Screen } from '../routes/Router';
 import { Sidebar } from './Sidebar';
 
@@ -12,6 +13,8 @@ type IProps = {};
 
 export const Header: FC<IProps> = () => {
     const isQuestionsPage = useRouteMatch(Screen.AddQuestion);
+    const isTeacher = useRoleUserAuthenticated(UserRole.teacher);
+
     const { user } = useAuth();
 
     const [isOpenSidebar, setIsOpenSidebar] = useState<boolean>(false);
@@ -46,11 +49,13 @@ export const Header: FC<IProps> = () => {
                             : 'sm:justify-end justify-between'
                     } flex sm:w-1/2 w-full`}
                 >
-                    <PrimaryButton
-                        color="green"
-                        className="md:block hidden px-6 text-lg py-2 mr-8"
-                        title="Thêm câu hỏi"
-                    />
+                    {isTeacher && (
+                        <PrimaryButton
+                            color="green"
+                            className="md:block hidden px-6 text-lg py-2 mr-8"
+                            title="Thêm câu hỏi"
+                        />
+                    )}
                     <button
                         className="outline-none focus:outline-none text-white border-b-3px px-4 transition duration-300 py-1 flex border-1.6px border-primaryColor rounded-full xs:mr-8 mr-4  items-center"
                         type="button"
