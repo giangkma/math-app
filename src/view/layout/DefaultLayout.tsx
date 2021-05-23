@@ -1,10 +1,20 @@
 import { config } from '@react-spring/core';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import React, { FC } from 'react';
+import { Helmet } from 'react-helmet';
+import { PageTransittion } from '../components/PageTransittion';
 
-export const DefaultLayout: FC = ({ children }) => {
+type IProps = {
+    title?: string;
+};
+
+export const DefaultLayout: FC<IProps> = ({ children, title }) => {
     return (
         <div className="default-layout pb-40">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{title}</title>
+            </Helmet>
             <Parallax pages={1} config={config.slow}>
                 <ParallaxLayer
                     id="page-1"
@@ -24,7 +34,7 @@ export const DefaultLayout: FC = ({ children }) => {
                         backgroundSize: 'cover',
                     }}
                 />
-                {children}
+                <PageTransittion>{children}</PageTransittion>
             </Parallax>
         </div>
     );

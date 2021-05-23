@@ -30,10 +30,12 @@ module.exports = {
             },
             width: {
                 7: '1.75rem',
+                28: '7rem',
                 35: '8.75rem',
                 75: '18.75rem',
                 125: '31.25rem',
                 195: '48.75rem',
+                '350px': '350px',
                 '400px': '400px',
             },
             maxWidth: {},
@@ -82,6 +84,11 @@ module.exports = {
     variants: {
         borderWidth: ['last'],
         stroke: ['group-hover', 'hover'],
+        textColor: ['group-hover', 'hover'],
+        display: ['responsive', 'hover', 'focus', 'group-hover'],
+        rotate: ['group-hover'],
+        margin: ['group-hover', 'responsive', 'hover'],
+        opacity: ['group-hover'],
     },
     plugins: [],
 };

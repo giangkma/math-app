@@ -19,12 +19,16 @@ export const Alert: FC<Props> = ({
         <>
             {message && (
                 <div
-                    className="rounded-full my-4 bg-red-500 px-1 flex justify-between items-center pr-3"
+                    className={`rounded-full z-50 my-4 border-2 bg-opacity-25 px-3 py-2 flex justify-between items-center pr-3 ${
+                        isSuccess
+                            ? 'border-brightGreen bg-green-900'
+                            : 'border-alizarinRed bg-red-900'
+                    }`}
                     role="alert"
                 >
                     <div className="flex items-center justify-start">
                         {isSuccess ? <TickGreenIconSVG /> : <WarningIconSVG />}
-                        <div className="block sm:inline ml-2 text-woodyBrown">
+                        <div className="block sm:inline ml-2 text-white">
                             <span>{message}</span>
                             {isSuccess && redirectUrl && (
                                 <>
@@ -42,7 +46,7 @@ export const Alert: FC<Props> = ({
                         type="button"
                         onClick={clearMessage}
                     >
-                        <CloseIconSVG />
+                        <CloseIconSVG className="w-5 h-5 text-white" />
                     </button>
                 </div>
             )}

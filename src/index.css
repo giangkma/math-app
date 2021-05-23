@@ -6,6 +6,18 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Quicksand', sans-serif;
 }
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+.content-tooltip {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+.button-tooltip:hover ~ .content-tooltip {
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+}
 
 .tooltip-question {
     position: relative;
@@ -39,11 +51,11 @@ body {
 .menu-bottom {
     background: linear-gradient(rgb(9, 1, 15), black);
 }
-.line-clamp-1 {
+.line-clamp-2 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
 }
 
 .new-form-container {
@@ -62,28 +74,29 @@ body {
     background: #191819;
 }
 
-.card-classroom {
-    width: 12rem;
+/* animation page */
+.fade-enter {
+    opacity: 0;
 }
 
-@media (min-width: 375px) and (max-width: 425px) {
-    .card-classroom {
-        width: 9rem;
-    }
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 800ms;
 }
 
-@media (max-width: 375px) {
-    .card-classroom {
-        width: 8rem;
-    }
+.fade-exit {
+    opacity: 1;
 }
 
-@media (max-width: 320px) {
-    .card-classroom {
-        width: 7rem;
-        padding: 0.6rem !important;
-    }
-    .card-classroom h1 {
-        font-size: 14px;
-    }
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 800ms;
+}
+
+.fade-slider-exit > .fade {
+    opacity: 0;
+}
+
+.fade-slider-enter > .fade {
+    opacity: 1;
 }

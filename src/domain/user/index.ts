@@ -3,6 +3,7 @@ export type AuthToken = string;
 export enum UserRole {
     teacher = 'teacher',
     student = 'student',
+    admin = 'admin',
 }
 export interface UserToken {
     authToken: string;

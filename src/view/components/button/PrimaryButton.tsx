@@ -13,7 +13,7 @@ export const PrimaryButton: FC<IProps> = ({
     title,
     active,
     submit,
-    className = 'px-12 py-3 text-xl mx-2 ',
+    className = 'px-12 py-3 mx-2 ',
     onClick,
     disabled,
     color = 'blue',
@@ -27,7 +27,7 @@ export const PrimaryButton: FC<IProps> = ({
                     : color === 'blue'
                     ? 'bg-dodgerBlue border-easternBlue '
                     : ''
-            } text-white ${className}`}
+            } text-white sm:text-xl text-base ${className}`}
             onClick={onClick}
         >
             {title}

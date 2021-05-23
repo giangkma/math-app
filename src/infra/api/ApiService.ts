@@ -25,9 +25,6 @@ export default (): ApiService => {
     const apiConfig: Options = {
         prefixUrl: PREFIX_URL,
         timeout: API_CONFIG.timeout,
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-        },
         throwHttpErrors: false,
         retry: 0,
         hooks: {
@@ -49,14 +46,13 @@ export default (): ApiService => {
 
     const api = ky.extend(apiConfig);
 
-    const post: Request = async ({ url, data, options }) => {
+    const post: Request = async ({ url, data, options, body }) => {
         // https://github.com/sindresorhus/ky#json
-        if (data) {
-            options = {
-                ...options,
-                json: data,
-            };
-        }
+        options = {
+            ...options,
+            json: data,
+            body,
+        };
 
         const res = await api.post(url, options);
 
@@ -142,8 +138,13 @@ export default (): ApiService => {
     const authGet: AuthRequest = ({ url, userToken, data, options = {} }) =>
         get({ url, data, options: withUserToken(options, userToken) });
 
-    const authPost: AuthRequest = ({ url, userToken, data, options = {} }) =>
-        post({ url, data, options: withUserToken(options, userToken) });
+    const authPost: AuthRequest = ({
+        url,
+        userToken,
+        data,
+        body,
+        options = {},
+    }) => post({ url, data, body, options: withUserToken(options, userToken) });
 
     const authDel: AuthRequest = ({ url, userToken, data, options = {} }) =>
         del({ url, data, options: withUserToken(options, userToken) });

@@ -75,12 +75,14 @@ export const Register: FC = () => {
                                 name="name"
                                 placeholder="Họ và tên"
                             />
-                            <InputText
-                                msg={errors.username}
-                                register={register}
-                                name="username"
-                                placeholder="Tên đăng nhập"
-                            />
+                            <div className="my-4">
+                                <InputText
+                                    msg={errors.username}
+                                    register={register}
+                                    name="username"
+                                    placeholder="Tên đăng nhập"
+                                />
+                            </div>
                             <InputPassword
                                 msg={errors.password}
                                 register={register}

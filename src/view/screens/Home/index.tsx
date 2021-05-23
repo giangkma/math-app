@@ -10,6 +10,7 @@ import { CloudIconSVG, EarthIconSVG, Satellite4IconSVG } from 'src/assets/svg';
 import { PrimaryButton } from 'src/view/components/button/PrimaryButton';
 import { Logo } from 'src/view/components/Logo';
 import { Screen } from 'src/view/routes/Router';
+import { PageTransittion } from 'src/view/components/PageTransittion';
 
 const Decoration = () => (
     <React.Fragment>
@@ -128,178 +129,180 @@ type IProps = {};
 
 export const Home: FC<IProps> = () => {
     return (
-        <Parallax pages={5} config={config.slow}>
-            <ParallaxLayer
-                id="page-1"
-                offset={0}
-                speed={0}
-                style={{ background: 'linear-gradient(black, Indigo)' }}
-            />
-            <ParallaxLayer
-                id="page-2"
-                offset={1}
-                speed={0}
-                style={{
-                    background: 'linear-gradient(Indigo, DeepSkyBlue)',
-                }}
-            />
-            <ParallaxLayer
-                id="page-3"
-                offset={2}
-                speed={0}
-                style={{
-                    background: 'linear-gradient(DeepSkyBlue, yellow)',
-                }}
-            />
-            <ParallaxLayer
-                id="page-4"
-                offset={3}
-                speed={0}
-                style={{
-                    background: 'linear-gradient(yellow, ForestGreen)',
-                }}
-            />
-            <ParallaxLayer
-                id="page-5"
-                offset={4}
-                speed={0}
-                style={{
-                    background: 'linear-gradient(ForestGreen, SaddleBrown)',
-                }}
-            />
+        <PageTransittion>
+            <Parallax pages={5} config={config.slow}>
+                <ParallaxLayer
+                    id="page-1"
+                    offset={0}
+                    speed={0}
+                    style={{ background: 'linear-gradient(black, Indigo)' }}
+                />
+                <ParallaxLayer
+                    id="page-2"
+                    offset={1}
+                    speed={0}
+                    style={{
+                        background: 'linear-gradient(Indigo, DeepSkyBlue)',
+                    }}
+                />
+                <ParallaxLayer
+                    id="page-3"
+                    offset={2}
+                    speed={0}
+                    style={{
+                        background: 'linear-gradient(DeepSkyBlue, yellow)',
+                    }}
+                />
+                <ParallaxLayer
+                    id="page-4"
+                    offset={3}
+                    speed={0}
+                    style={{
+                        background: 'linear-gradient(yellow, ForestGreen)',
+                    }}
+                />
+                <ParallaxLayer
+                    id="page-5"
+                    offset={4}
+                    speed={0}
+                    style={{
+                        background: 'linear-gradient(ForestGreen, SaddleBrown)',
+                    }}
+                />
 
-            <ParallaxLayer
-                offset={0}
-                speed={0}
-                factor={3}
-                style={{
-                    backgroundImage: `url(https://awv3node-homepage.surge.sh/build/assets/stars.svg)`,
-                    backgroundSize: 'cover',
-                }}
-            />
+                <ParallaxLayer
+                    offset={0}
+                    speed={0}
+                    factor={3}
+                    style={{
+                        backgroundImage: `url(https://awv3node-homepage.surge.sh/build/assets/stars.svg)`,
+                        backgroundSize: 'cover',
+                    }}
+                />
 
-            <Decoration />
+                <Decoration />
 
-            <ParallaxLayer
-                offset={0}
-                speed={-0.3}
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'column',
-                }}
-            >
-                <div className="text-center px-8">
-                    <h1 className="md:text-4xl text-2xl text-white">
-                        Học Toán Trực Tuyến Dành Cho Học Sinh
-                    </h1>
-                    <h2 className="md:text-5xl text-3xl text-white mt-4">
-                        Tiểu Học Cơ Sở
-                    </h2>
-                    <div className="sm:hidden block ">
+                <ParallaxLayer
+                    offset={0}
+                    speed={-0.3}
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        flexDirection: 'column',
+                    }}
+                >
+                    <div className="text-center px-8">
+                        <h1 className="md:text-4xl text-2xl text-white">
+                            Học Toán Trực Tuyến Dành Cho Học Sinh
+                        </h1>
+                        <h2 className="md:text-5xl text-3xl text-white mt-4">
+                            Tiểu Học Cơ Sở
+                        </h2>
+                        <div className="sm:hidden block ">
+                            <Link to={Screen.Login}>
+                                <PrimaryButton
+                                    title="Đăng nhập ngay"
+                                    className="px-8 mt-6 py-2"
+                                    color="green"
+                                />
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="sm:flex hidden absolute top-0 w-full item-center justify-between p-5 lg:p-10">
+                        <Logo />
                         <Link to={Screen.Login}>
                             <PrimaryButton
                                 title="Đăng nhập ngay"
-                                className="px-8 mt-6 py-2"
+                                className="w-full px-10 py-2"
                                 color="green"
                             />
                         </Link>
                     </div>
-                </div>
-                <div className="sm:flex hidden absolute top-0 w-full item-center justify-between p-5 lg:p-10">
-                    <Logo />
-                    <Link to={Screen.Login}>
-                        <PrimaryButton
-                            title="Đăng nhập ngay"
-                            className="w-full px-10 py-2"
-                            color="green"
-                        />
-                    </Link>
-                </div>
-            </ParallaxLayer>
+                </ParallaxLayer>
 
-            <ParallaxLayer
-                offset={1}
-                speed={-0.3}
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                <div className="text-center px-8">
-                    <h1 className="md:text-4xl text-2xl text-white">
-                        Học Toán Trực Tuyến Dành Cho Học Sinh
-                    </h1>
-                    <h2 className="md:text-5xl text-3xl text-white mt-4">
-                        Tiểu Học Cơ Sở
-                    </h2>
-                </div>
-            </ParallaxLayer>
+                <ParallaxLayer
+                    offset={1}
+                    speed={-0.3}
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    <div className="text-center px-8">
+                        <h1 className="md:text-4xl text-2xl text-white">
+                            Học Toán Trực Tuyến Dành Cho Học Sinh
+                        </h1>
+                        <h2 className="md:text-5xl text-3xl text-white mt-4">
+                            Tiểu Học Cơ Sở
+                        </h2>
+                    </div>
+                </ParallaxLayer>
 
-            <ParallaxLayer
-                offset={2}
-                speed={-0.3}
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                <div className="text-center px-8">
-                    <h1 className="md:text-4xl text-2xl text-white">
-                        Học Toán Trực Tuyến Dành Cho Học Sinh
-                    </h1>
-                    <h2 className="md:text-5xl text-3xl text-white mt-4">
-                        Tiểu Học Cơ Sở
-                    </h2>
-                </div>
-            </ParallaxLayer>
+                <ParallaxLayer
+                    offset={2}
+                    speed={-0.3}
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    <div className="text-center px-8">
+                        <h1 className="md:text-4xl text-2xl text-white">
+                            Học Toán Trực Tuyến Dành Cho Học Sinh
+                        </h1>
+                        <h2 className="md:text-5xl text-3xl text-white mt-4">
+                            Tiểu Học Cơ Sở
+                        </h2>
+                    </div>
+                </ParallaxLayer>
 
-            <ParallaxLayer
-                offset={3}
-                speed={-0.3}
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                <div className="text-center px-8">
-                    <h1 className="md:text-4xl text-2xl text-white">
-                        Học Toán Trực Tuyến Dành Cho Học Sinh
-                    </h1>
-                    <h2 className="md:text-5xl text-3xl text-white mt-4">
-                        Tiểu Học Cơ Sở
-                    </h2>
-                </div>
-            </ParallaxLayer>
+                <ParallaxLayer
+                    offset={3}
+                    speed={-0.3}
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    <div className="text-center px-8">
+                        <h1 className="md:text-4xl text-2xl text-white">
+                            Học Toán Trực Tuyến Dành Cho Học Sinh
+                        </h1>
+                        <h2 className="md:text-5xl text-3xl text-white mt-4">
+                            Tiểu Học Cơ Sở
+                        </h2>
+                    </div>
+                </ParallaxLayer>
 
-            <ParallaxLayer
-                offset={4}
-                speed={-0.3}
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundImage: `url(https://awv3node-homepage.surge.sh/build/assets/stars.svg)`,
-                    backgroundSize: 'cover',
-                }}
-            >
-                <div className="flex flex-col text-center">
-                    <h1 className="md:text-4xl sm:text-3xl text-2xl text-white">
-                        Hãy đăng nhập ngay nào ...
-                    </h1>
-                    <Link to={Screen.Login}>
-                        <PrimaryButton
-                            className="px-6 py-3 mt-6 md:text-2xl text-xl"
-                            title="Đăng nhập"
-                            color="green"
-                        />
-                    </Link>
-                </div>
-            </ParallaxLayer>
-        </Parallax>
+                <ParallaxLayer
+                    offset={4}
+                    speed={-0.3}
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundImage: `url(https://awv3node-homepage.surge.sh/build/assets/stars.svg)`,
+                        backgroundSize: 'cover',
+                    }}
+                >
+                    <div className="flex flex-col text-center">
+                        <h1 className="md:text-4xl sm:text-3xl text-2xl text-white">
+                            Hãy đăng nhập ngay nào ...
+                        </h1>
+                        <Link to={Screen.Login}>
+                            <PrimaryButton
+                                className="px-6 py-3 mt-6 md:text-2xl text-xl"
+                                title="Đăng nhập"
+                                color="green"
+                            />
+                        </Link>
+                    </div>
+                </ParallaxLayer>
+            </Parallax>
+        </PageTransittion>
     );
 };

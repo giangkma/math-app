@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const InputText: FC<Props> = ({
-    classNameContainer = 'mb-4',
+    classNameContainer,
     classNameInput,
     placeholder,
     defaultValue,
@@ -23,10 +23,10 @@ export const InputText: FC<Props> = ({
     ...props
 }) => {
     return (
-        <div className={`${classNameContainer}  block w-full font-body`}>
+        <div className={`${classNameContainer} block w-full font-body`}>
             <input
                 type="text"
-                className={`outline-none text-gray-800 w-full h-12 focus:outline-none rounded-lg border-2 border-nobelGray bg-white p-2 pl-4 ${classNameInput}`}
+                className={`outline-none w-full h-12 pr-10 xs:pr-0 focus:outline-none rounded-lg border-1.6px border-primaryColor border-b-4 text-white bg-transparent p-2 pl-4 ${classNameInput}`}
                 placeholder={placeholder}
                 ref={register}
                 defaultValue={defaultValue}

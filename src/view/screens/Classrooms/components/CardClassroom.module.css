@@ -1,0 +1,35 @@
+.cardClassroom {
+    width: 10rem;
+}
+@media (min-width: 1024px) and (max-width: 1280px) {
+    .cardClassroom {
+        width: 9.5rem;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .cardClassroom {
+        width: 8.5rem;
+    }
+}
+@media (min-width: 425px) and (max-width: 768px) {
+    .cardClassroom {
+        width: 8rem;
+    }
+}
+@media (min-width: 375px) and (max-width: 425px) {
+    .cardClassroom {
+        width: 7.5rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .cardClassroom {
+        width: 7rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .cardClassroom h1 {
+        font-size: 14px;
+    }
+}

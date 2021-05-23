@@ -1,4 +1,4 @@
-import { QuestionType } from 'src/domain/question';
+import { QuestionPayload, QuestionType } from 'src/domain/question';
 import { ApiService } from '../api/ApiService';
 import { AuthService } from '../auth/authService';
 
@@ -16,24 +16,81 @@ export class QuestionsService {
         this.authService = authService;
     }
 
-    async APIfetchListQuestions(className: string): Promise<QuestionType[]> {
+    async APIcreateQuestion(payload: QuestionPayload): Promise<QuestionType> {
         // get auth token
         const token = await this.authService.getToken();
-        const res = await this.apiService.authGet({
+        const res = await this.apiService.authPost({
             url: 'questions',
-            data: { className },
+            data: [payload],
             userToken: { authToken: token },
         });
 
         return res;
     }
 
-    async APIcheckAnwer(idQuestion: string, answer: string) {
+    async APIupdateQuestion(
+        id: string,
+        payload: QuestionPayload,
+    ): Promise<QuestionType> {
+        // get auth token
+        const token = await this.authService.getToken();
+        const res = await this.apiService.authPut({
+            url: `questions/${id}`,
+            data: payload,
+            userToken: { authToken: token },
+        });
+
+        return res;
+    }
+
+    async APIcreateQuestionsExcel(formData: any, className: string) {
+        // get auth token
+        const token = await this.authService.getToken();
+        const res = await this.apiService.authPost({
+            url: `questions/${className}/xlsx-create`,
+            body: formData,
+            userToken: { authToken: token },
+        });
+
+        return res.json();
+    }
+
+    async APIfetchOneQuestion(id: string): Promise<QuestionType | undefined> {
+        // get auth token
+        const token = await this.authService.getToken();
+        const res = await this.apiService.authGet({
+            url: `questions/${id}`,
+            userToken: { authToken: token },
+        });
+
+        return res;
+    }
+
+    async APIfetchListQuestions(
+        className: string,
+        chapter: string | undefined,
+    ): Promise<QuestionType[]> {
+        // get auth token
+        const token = await this.authService.getToken();
+        const res = await this.apiService.authGet({
+            url: 'questions',
+            data: { className, chapter },
+            userToken: { authToken: token },
+        });
+
+        return res;
+    }
+
+    async APIcheckAnwer(
+        idQuestion: string,
+        answer: string,
+        updateScore: boolean,
+    ) {
         // get auth token
         const token = await this.authService.getToken();
         const res = await this.apiService.authPost({
             url: `questions/${idQuestion}`,
-            data: { answer },
+            data: { answer, updateScore },
             userToken: { authToken: token },
         });
 

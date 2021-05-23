@@ -1,4 +1,4 @@
-export interface IClassrooms {
+export interface Classrooms {
     id: string | number;
     nameClass: string;
     imageClass: string;
@@ -9,4 +9,9 @@ export interface GetExerciseTypes {
     status?: string;
     pageIndex?: number;
     search?: string;
+}
+
+export interface QueryQuestions {
+    className: string;
+    chapter?: string;
 }

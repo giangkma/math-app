@@ -4,6 +4,7 @@ import { ReactComponent as SpinnerIconSVG } from './spinner-icon.svg';
 import { ReactComponent as EyeActiveIconSVG } from './eye-active.svg';
 import { ReactComponent as EyeInActiveIconSVG } from './eye-inactive.svg';
 import { ReactComponent as WarningIconSVG } from './warning-icon.svg';
+import { ReactComponent as WarningWhiteIconSVG } from './warning-white-icon.svg';
 import { ReactComponent as LockIconSVG } from './lock.svg';
 import { ReactComponent as TickWhiteIconSVG } from './tick-white.svg';
 import { ReactComponent as TickGreenIconSVG } from './tick-green.svg';
@@ -14,6 +15,8 @@ import { ReactComponent as CloudIconSVG } from './cloud.svg';
 import { ReactComponent as EarthIconSVG } from './earth.svg';
 import { ReactComponent as Satellite4IconSVG } from './satellite4.svg';
 import { ReactComponent as ArrowBackIconSVG } from './arrow-back.svg';
+import { ReactComponent as ArrowDownIconSVG } from './arrow-down.svg';
+import { ReactComponent as ArrowUpWhiteIconSVG } from './arrow-up-white.svg';
 
 import { ReactComponent as HomeActiveIconSVG } from './home-active.svg';
 import { ReactComponent as HomeInActiveIconSVG } from './home-inactive.svg';
@@ -33,6 +36,7 @@ export {
     CloseIconSVG,
     SpinnerIconSVG,
     WarningIconSVG,
+    WarningWhiteIconSVG,
     EyeActiveIconSVG,
     EyeInActiveIconSVG,
     LockIconSVG,
@@ -54,4 +58,6 @@ export {
     PersonInActiveIconSVG,
     BirdGreenIconSVG,
     Person10IconSVG,
+    ArrowDownIconSVG,
+    ArrowUpWhiteIconSVG,
 };

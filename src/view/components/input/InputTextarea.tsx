@@ -26,20 +26,22 @@ export const InputTextarea: FC<Props> = ({
     return (
         <div className={`${classNameContainer}  block w-full font-body `}>
             {label && (
-                <label className="text-sm block mb-1 leading-4">{label}</label>
+                <label className="sm:text-xl text-lg block mb-3 leading-4">
+                    {label}
+                </label>
             )}
             <textarea
                 className={`
-                    outline-none bg-woodyBrown text-white px-4 py-2 rounded-12px w-full
+                    outline-none bg-transparent text-xl  border-1.6px border-primaryColor border-b-4  text-white px-4 py-2 rounded-12px w-full
                         ${classNameInput}
                     `}
-                rows={rows || 5}
+                rows={rows || 3}
                 ref={register}
                 placeholder={placeholder}
                 {...props}
             />
             {msg && (
-                <p className="text-errorRed text-sm italic mt-1 mb-3">
+                <p className="text-sunsetOrange text-sm italic mt-1 mb-3">
                     {msg.message}
                 </p>
             )}
