@@ -1,5 +1,5 @@
 export type ResultRank = {
-    _id: string;
+    id: string;
     name: string;
     score: number;
 };

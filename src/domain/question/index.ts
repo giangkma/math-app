@@ -1,5 +1,5 @@
 export interface QuestionType {
-    _id: string;
+    id: string;
     question: string;
     answer: string[];
     className: string;

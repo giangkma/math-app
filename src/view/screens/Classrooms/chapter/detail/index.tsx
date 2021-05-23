@@ -64,7 +64,7 @@ const useCheckQuestion = () => {
 };
 
 const initialQuestion = {
-    _id: '',
+    id: '',
     question: '',
     answer: [],
     className: '',
@@ -140,7 +140,7 @@ export const ChapterDetail: FC<{}> = () => {
             // Scores are only updated when students complete the test in the “Ôn Luyện cuối năm” section.
             const updateScore = chapter === 'all' ? true : false;
             const res = await questionsService.APIcheckAnwer(
-                question._id,
+                question.id,
                 answerSelected,
                 updateScore,
             );
@@ -163,7 +163,7 @@ export const ChapterDetail: FC<{}> = () => {
     const onSendReport = async (): Promise<void> => {
         try {
             setLoading(true);
-            await reportService.APIsendReport(question._id);
+            await reportService.APIsendReport(question.id);
             showToatify('success', 'Cảm ơn bạn đã gửi báo cáo !');
             onContinueQuestion();
         } catch (error) {
@@ -343,13 +343,13 @@ export const ChapterDetail: FC<{}> = () => {
                             <div className="flex items-center">
                                 <WarningIconSVG className="sm:w-16 sm:h-16 xs:w-12 xs:h-12 h-10 w-10 sm:mr-6 mr-3" />
                                 <div className="flex flex-col items-start justify-center">
-                                    <p className="lg:text-3xl sm:text-2xl text-sm font-black text-alizarinRed">
+                                    <p className="lg:text-2xl sm:text-xl text-sm font-black text-alizarinRed">
                                         Đáp án là : {correctAnswer}
                                     </p>
                                     <button
                                         type="button"
                                         onClick={toggleModalReport}
-                                        className="lg:text-3xl sm:text-2xl text-sm flex items-center outline-none focus:outline-none mt-2 font-black text-sunsetOrange hover:text-alizarinRed"
+                                        className="lg:text-2xl sm:text-xl text-sm flex items-center outline-none focus:outline-none mt-2 font-black text-sunsetOrange hover:text-alizarinRed"
                                     >
                                         <svg
                                             className="w-6 h-6 mr-1"

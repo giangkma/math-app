@@ -63,14 +63,14 @@ export const Ranks: FC<IProps> = () => {
                         {ranks.map((item, index) => {
                             return (
                                 <div
-                                    key={item._id}
-                                    className={`grid grid-cols-5 text-center text-white mb-1 text-lg  py-2 rounded-lg ${item._id ===
-                                        user?._id && 'bg-dodgerBlue'}`}
+                                    key={item.id}
+                                    className={`grid grid-cols-5 text-center text-white mb-1 text-lg  py-2 rounded-lg ${item.id ===
+                                        user?.id && 'bg-dodgerBlue'}`}
                                 >
                                     <p className="col-span-1">{index + 1}</p>
                                     <p className="col-span-3">
                                         {item.name}
-                                        {item._id === user?._id && (
+                                        {item.id === user?.id && (
                                             <span className="text-xs">
                                                 &nbsp;(bạn)
                                             </span>

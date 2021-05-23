@@ -93,7 +93,7 @@ export const Notification: FC<IProps> = () => {
                                                 const { senders } = report;
                                                 return (
                                                     <Link
-                                                        key={report._id}
+                                                        key={report.id}
                                                         to={{
                                                             pathname:
                                                                 Screen.Reports,

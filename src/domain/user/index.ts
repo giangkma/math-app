@@ -15,7 +15,7 @@ export interface ResponseAuth {
 }
 
 export interface User {
-    _id: string;
+    id: string;
     username: string;
     name: string;
     role: UserRole;

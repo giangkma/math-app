@@ -1,5 +1,5 @@
 export interface ResultReport {
-    _id: string;
+    id: string;
     questionId: string;
     senders: string[];
 }

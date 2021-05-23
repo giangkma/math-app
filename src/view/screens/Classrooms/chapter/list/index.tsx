@@ -31,7 +31,7 @@ export const ChapterList: FC<IProps> = () => {
                 <HeaderBack to={Screen.Classrooms} title={`Lớp ${className}`} />
                 <PageTransittion>
                     {isTeacher && (
-                        <div className="absolute top-0 right-0 m-3">
+                        <div className="absolute top-0 right-0 m-4">
                             <Link
                                 to={`${Screen.Classrooms}/${className}/add-questions`}
                             >
