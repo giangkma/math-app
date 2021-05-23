@@ -38,7 +38,8 @@ export const Register: FC = () => {
             showToatify('success', 'Chào mừng bạn !');
             history.push(Screen.Classrooms);
         } catch (error) {
-            setMessage({ message: error.message });
+            console.log(error);
+            setMessage({ message: 'Tên đăng nhập đã tồn tại' });
         } finally {
             setLoading(false);
         }
@@ -46,9 +47,9 @@ export const Register: FC = () => {
     return (
         <DefaultLayout>
             <Theme2 />
-            <div className="bg-woodyBrown h-full ">
+            <div className="bg-woodyBrown h-full">
                 <Spinner loading={loading} />
-                <div className=" absolute flex top-0 w-full item-center justify-between p-5 lg:p-10">
+                <div className=" absolute flex bg-transparent z-10 top-0 w-full item-center justify-between p-5 lg:p-10">
                     <Logo />
                     <div className="sm:block hidden">
                         <Link to={Screen.Login}>
@@ -64,9 +65,14 @@ export const Register: FC = () => {
                     <div className="text-lightPeach text-xl">
                         <h1>Hãy nhập đầy đủ thông tin !</h1>
                     </div>
+                    <Alert
+                        isSuccess={isSuccess}
+                        message={message}
+                        clearMessage={clearMessage}
+                    />
                     <form
                         onSubmit={handleSubmit(onSubmit)}
-                        className="flex items-center justify-center w-full mt-4"
+                        className="flex items-center justify-center w-full sm:mt-6 mt-4"
                     >
                         <div className="w-75 text-xl">
                             <InputText
@@ -89,18 +95,14 @@ export const Register: FC = () => {
                                 name="password"
                                 placeholder="Mật khẩu"
                             />
-                            <Alert
-                                isSuccess={isSuccess}
-                                message={message}
-                                clearMessage={clearMessage}
-                            />
+
                             <PrimaryButton
                                 title="Đăng ký"
                                 className="w-full py-2"
                                 submit
                                 color="green"
                             />
-                            <div className="sm:hidden block mt-6">
+                            <div className="sm:hidden block sm:mt-6 mt-4">
                                 <Link to={Screen.Login}>
                                     <PrimaryButton
                                         title="Đăng nhập"

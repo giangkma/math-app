@@ -199,25 +199,15 @@ export const Home: FC<IProps> = () => {
                         <h2 className="md:text-5xl text-3xl text-white mt-4">
                             Tiểu Học Cơ Sở
                         </h2>
-                        <div className="sm:hidden block ">
+                        <div className="">
                             <Link to={Screen.Login}>
                                 <PrimaryButton
-                                    title="Đăng nhập ngay"
+                                    title="Bắt đầu"
                                     className="px-8 mt-6 py-2"
                                     color="green"
                                 />
                             </Link>
                         </div>
-                    </div>
-                    <div className="sm:flex hidden absolute top-0 w-full item-center justify-between p-5 lg:p-10">
-                        <Logo />
-                        <Link to={Screen.Login}>
-                            <PrimaryButton
-                                title="Đăng nhập ngay"
-                                className="w-full px-10 py-2"
-                                color="green"
-                            />
-                        </Link>
                     </div>
                 </ParallaxLayer>
 
@@ -291,12 +281,12 @@ export const Home: FC<IProps> = () => {
                 >
                     <div className="flex flex-col text-center">
                         <h1 className="md:text-4xl sm:text-3xl text-2xl text-white">
-                            Hãy đăng nhập ngay nào ...
+                            Hãy bắt đầu học ngay nào ...
                         </h1>
                         <Link to={Screen.Login}>
                             <PrimaryButton
                                 className="px-6 py-3 mt-6 md:text-2xl text-xl"
-                                title="Đăng nhập"
+                                title="Bắt đầu"
                                 color="green"
                             />
                         </Link>

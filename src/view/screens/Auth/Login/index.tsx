@@ -49,7 +49,7 @@ export const Login: FC = () => {
             <PageTransittion>
                 <div className="bg-woodyBrown h-full ">
                     <Spinner loading={loading} />
-                    <div className="absolute top-0 flex w-full item-center justify-between p-5 lg:p-10">
+                    <div className="absolute top-0 flex z-10 w-full item-center justify-between p-5 lg:p-10">
                         <Logo />
                         <div className="sm:block hidden">
                             <Link to={Screen.Register}>
@@ -62,13 +62,18 @@ export const Login: FC = () => {
                         </div>
                     </div>
                     <div className="text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
-                        <div className="text-lightPeach text-xl">
-                            <h1 className="text-3xl">Xin chào !</h1>
+                        <div className="text-lightPeach sm:text-xl text-lg">
+                            <h1 className="sm:text-3xl text-2xl">Xin chào !</h1>
                             <h1>Hãy đăng nhập để tiếp tục</h1>
                         </div>
+                        <Alert
+                            isSuccess={isSuccess}
+                            message={message}
+                            clearMessage={clearMessage}
+                        />
                         <form
                             onSubmit={handleSubmit(onSubmit)}
-                            className="flex items-center justify-center w-full mt-6"
+                            className="flex items-center justify-center w-full sm:mt-6 mt-4"
                         >
                             <div className="w-75 text-xl">
                                 <InputText
@@ -85,17 +90,13 @@ export const Login: FC = () => {
                                         placeholder="Mật khẩu"
                                     />
                                 </div>
-                                <Alert
-                                    isSuccess={isSuccess}
-                                    message={message}
-                                    clearMessage={clearMessage}
-                                />
+
                                 <PrimaryButton
                                     title="Đăng nhập"
                                     className="w-full py-2"
                                     submit
                                 />
-                                <div className="mt-6 sm:hidden block">
+                                <div className="sm:mt-6 mt-4 sm:hidden block">
                                     <Link to={Screen.Register}>
                                         <PrimaryButton
                                             title="Đăng ký"

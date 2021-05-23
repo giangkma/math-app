@@ -12,8 +12,4 @@ export const setUser = createAction(
     }),
 )();
 
-export const logout = createAction(typePrefixFormat('LOG_OUT'), () => ({}))();
-
-export type UserActions =
-    | ReturnType<typeof setUser>
-    | ReturnType<typeof logout>;
+export type UserActions = ReturnType<typeof setUser>;

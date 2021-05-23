@@ -29,7 +29,7 @@ export const Header: FC<IProps> = () => {
 
     return (
         <>
-            <div className="flex item-header absolute items-center w-full justify-between p-4 sm:p-5 lg:p-6 border-b-2 border-nobelGray border-opacity-25">
+            <div className="flex item-header relative items-center w-full justify-between p-2 sm:p-5 lg:p-6 border-b-2 border-nobelGray border-opacity-25">
                 <div className="sm:block hidden">
                     <Link to={Screen.Classrooms}>
                         <h1 className="md:text-4xl sm:text-3xl text-2xl text-white font-bold">

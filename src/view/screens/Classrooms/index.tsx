@@ -50,7 +50,7 @@ const ClassroomList: FC<IProps> = () => {
             <div className="h-screen relative overflow-y-auto">
                 <Header />
                 <PageTransittion>
-                    <div className="flex items-center justify-center h-full xl:gap-40 gap-20 sm:mt-12 mt-4 xl:px-16 md:px-10 px-4 md:pb-12 sm:pb-40 pb-32">
+                    <div className="flex h-full items-start justify-center xl:gap-40 gap-20 xl:mt-32 md:mt-24 sm:mt-20 mt-6 xl:px-16 md:px-10 px-4 md:pb-12 sm:pb-40 pb-32">
                         <div className="">
                             <div className="flex items-center justify-between xs:gap-8 gap-5">
                                 <CardClassroom classroom={dataClassrooms[0]} />

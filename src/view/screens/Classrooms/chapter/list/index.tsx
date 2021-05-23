@@ -45,7 +45,7 @@ export const ChapterList: FC<IProps> = () => {
                     )}
                     <div className="w-full sm:h-full flex flex-col items-center justify-center sm:my-0 my-6">
                         {isStudent && (
-                            <h1 className="text-center z-20 w-full mb-12 text-white text-3xl">
+                            <h1 className="text-center z-20 w-full sm:mb-12 mb-4 text-white lg:text-3xl md:text-2xl text-xl">
                                 Tôi muốn học . . .
                             </h1>
                         )}
@@ -72,28 +72,34 @@ export const ChapterList: FC<IProps> = () => {
                                 );
                             })}
                         </div>
-                        <div className="w-full z-10">
-                            {isStudent && (
+                        {isStudent && (
+                            <div className="w-full z-10 sm:pb-0 pb-40">
                                 <div className="mt-5 flex items-center justify-center">
-                                    <WarningWhiteIconSVG />
-                                    <p className=" text-white text-base ml-1">
-                                        Lưu ý : Xếp hạng sẽ chỉ dựa vào kết quả
-                                        phần
-                                        <span className="text-xl">
+                                    <WarningWhiteIconSVG className="sm:block hidden" />
+                                    <p className=" text-white text-base ml-1 text-center">
+                                        <span>
+                                            Lưu ý : Xếp hạng sẽ chỉ dựa vào kết
+                                            quả phần
+                                        </span>
+                                        <span className="text-xl sm:inline block">
                                             &nbsp;" Ôn luyện cuối năm "
                                         </span>
                                     </p>
                                 </div>
-                            )}
-                            <Link to={`${Screen.Classrooms}/${className}/all`}>
-                                <button
-                                    className="outline-none focus:outline-none text-white hover:bg-white hover:bg-opacity-25 border-b-3px px-8 mt-8 transition duration-300 py-2 flex border-1.6px border-primaryColor rounded-full mx-auto items-center md:text-2xl sm:text-xl text-lg"
-                                    type="button"
-                                >
-                                    Ôn luyện cuối năm
-                                </button>
-                            </Link>
-                        </div>
+                                <div>
+                                    <Link
+                                        to={`${Screen.Classrooms}/${className}/all`}
+                                    >
+                                        <button
+                                            className="outline-none focus:outline-none text-white hover:bg-white hover:bg-opacity-25 border-b-3px px-8 mt-8 transition duration-300 py-2 flex border-1.6px border-primaryColor rounded-full mx-auto items-center md:text-2xl sm:text-xl text-lg"
+                                            type="button"
+                                        >
+                                            Ôn luyện cuối năm
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </PageTransittion>
             </div>

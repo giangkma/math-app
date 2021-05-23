@@ -93,7 +93,6 @@ export class QuestionsService {
             data: { answer, updateScore },
             userToken: { authToken: token },
         });
-
         return res.json();
     }
 }

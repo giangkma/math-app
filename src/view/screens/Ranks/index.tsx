@@ -41,8 +41,8 @@ export const Ranks: FC = () => {
                     clearMessage={clearMessage}
                 />
                 <PageTransittion>
-                    <div className="sm:w-195 w-full sm:mx-auto mx-5 sm:mt-12 overflow-y-auto pb-32 p-4">
-                        <h1 className="p-2 pl-4 w-full text-left border-b border-white border-opacity-25 text-xl text-white">
+                    <div className="sm:w-195 w-full sm:mx-auto sm:mt-12 overflow-y-auto pb-32 p-4">
+                        <h1 className="p-2 sm:block hidden w-full text-left border-b border-white border-opacity-25 text-xl text-white">
                             Bảng xếp hạng
                         </h1>
                         <div className="p-3 flex items-center justify-between">
@@ -57,7 +57,7 @@ export const Ranks: FC = () => {
                                                 : 'blue'
                                         }
                                         title={`Lớp ${classroom.nameClass}`}
-                                        className="px-3 py-1 text-sm"
+                                        className="sm:px-3 px-2 py-1 text-sm"
                                         onClick={(): void =>
                                             setClassSelected(
                                                 classroom.nameClass,

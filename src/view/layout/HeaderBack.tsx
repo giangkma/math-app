@@ -14,7 +14,7 @@ export const HeaderBack: FC<IProps> = ({ to, title }) => {
                 <Link to={to}>
                     <ArrowBackIconSVG className="sm:w-10 w-8 cursor-pointer sm:h-10 h-8" />
                 </Link>
-                <p className="md:text-2xl sm:text-xl text-lg z-20 text-white sm:ml-6 ml-3">
+                <p className="md:text-2xl text-xl z-20 text-white sm:ml-6 ml-3">
                     {title}
                 </p>
             </div>

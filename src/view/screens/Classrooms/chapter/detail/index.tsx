@@ -192,7 +192,7 @@ export const ChapterDetail: FC<{}> = () => {
         return isExitCurrentPage;
     };
 
-    const score = sumCorrect * 10 - sumInCorrect * 5;
+    const score = sumCorrect * 10;
 
     return (
         <DefaultLayout
@@ -227,37 +227,20 @@ export const ChapterDetail: FC<{}> = () => {
                     </div>
                     <div className="flex-1 text-right">
                         {chapter === 'all' ? (
-                            <div className="z-10 text-white sm:text-xl text-sm m-3">
+                            <div className="z-10 text-white sm:text-xl text-lg m-3">
                                 <p className="sm:block hidden">
-                                    <span>
-                                        {score >= 0
-                                            ? 'Bạn có thêm'
-                                            : 'Bạn bị trừ'}
-                                    </span>
-                                    <span
-                                        className={`font-semibold text-2xl ${
-                                            score >= 0
-                                                ? 'text-brightGreen'
-                                                : 'text-alizarinRed'
-                                        }`}
-                                    >
-                                        &nbsp;{Math.abs(score)}&nbsp;
+                                    <span>Bạn có thêm</span>
+                                    <span className="font-semibold text-2xl text-brightGreen">
+                                        &nbsp;{score}&nbsp;
                                     </span>
                                     <span>Điểm</span>
                                 </p>
-                                <span
-                                    className={`font-semibold text-2xl sm:hidden block ${
-                                        score >= 0
-                                            ? 'text-brightGreen'
-                                            : 'text-alizarinRed'
-                                    }`}
-                                >
-                                    {score >= 0 ? `+ ${score}` : `- ${score}`}
-                                    &nbsp;
+                                <span className="font-semibold text-2xl sm:hidden block text-brightGreen">
+                                    {`+ ${score}`}
                                 </span>
                             </div>
                         ) : (
-                            <div className="z-10 text-white sm:text-xl text-sm flex flex-col m-3">
+                            <div className="z-10 text-white sm:text-xl text-lg flex flex-col m-3">
                                 <p>
                                     <span className="sm:inline hidden">
                                         Số câu&nbsp;
@@ -282,6 +265,11 @@ export const ChapterDetail: FC<{}> = () => {
                 </div>
                 {questions && (
                     <div className="text-center relative text-woodyBrown lg:mt-32 md:mt-24 mt-20 xl:mx-56 lg:mx-40 md:mx-32 sm:mx-20 mx-6 ">
+                        <Alert
+                            isSuccess={isSuccess}
+                            message={error || message}
+                            clearMessage={clearMessage}
+                        />
                         <div className="flex items-end">
                             <img
                                 className="lg:w-32 md:w-28 sm:w-24 w-20"
@@ -292,11 +280,6 @@ export const ChapterDetail: FC<{}> = () => {
                                 Câu {sum} : {question.question}
                             </div>
                         </div>
-                        <Alert
-                            isSuccess={isSuccess}
-                            message={error || message}
-                            clearMessage={clearMessage}
-                        />
                         <div className="grid grid-cols-2 z-50 sm:gap-8 xs:gap-6 gap-4 xs:p-10 p-4 border-1.6px border-mongooseGray rounded-xl">
                             {answerFilterDuplicate.map(item => {
                                 return (
@@ -343,13 +326,13 @@ export const ChapterDetail: FC<{}> = () => {
                             <div className="flex items-center">
                                 <WarningIconSVG className="sm:w-16 sm:h-16 xs:w-12 xs:h-12 h-10 w-10 sm:mr-6 mr-3" />
                                 <div className="flex flex-col items-start justify-center">
-                                    <p className="lg:text-2xl sm:text-xl text-sm font-black text-alizarinRed">
-                                        Đáp án là : {correctAnswer}
+                                    <p className="sm:text-2xl text-lg font-black text-alizarinRed">
+                                        Sai rồi !
                                     </p>
                                     <button
                                         type="button"
                                         onClick={toggleModalReport}
-                                        className="lg:text-2xl sm:text-xl text-sm flex items-center outline-none focus:outline-none mt-2 font-black text-sunsetOrange hover:text-alizarinRed"
+                                        className="lg:text-2xl sm:text-xl text-lg flex items-center outline-none focus:outline-none mt-2 font-black text-sunsetOrange hover:text-alizarinRed"
                                     >
                                         <svg
                                             className="w-6 h-6 mr-1"
@@ -374,7 +357,7 @@ export const ChapterDetail: FC<{}> = () => {
                         <button
                             type="button"
                             onClick={onRandomQuestion}
-                            className="ss:px-12 px-6 py-2 sm:text-xl text-sm outline-none focus:outline-none border-2 text-white hover:bg-darkGray hover:bg-opacity-25 border-b-4 font-bold border-mongooseGray rounded-lg"
+                            className="ss:px-12 px-6 py-2 sm:text-xl text-base outline-none focus:outline-none border-2 text-white hover:bg-darkGray hover:bg-opacity-25 border-b-4 font-bold border-mongooseGray rounded-lg"
                         >
                             Bỏ qua
                         </button>
@@ -392,7 +375,7 @@ export const ChapterDetail: FC<{}> = () => {
                                 : answerSelected
                                 ? 'bg-brightGreen  border-b-4 border-oliveGreen text-white'
                                 : 'bg-mongooseGray text-darkGray pointer-events-none'
-                        }  ss:px-12 px-6 py-2 sm:text-xl text-sm border-2 outline-none focus:outline-none border-b-4 font-bold border-mongooseGray rounded-lg`}
+                        }  ss:px-12 px-6 py-2 sm:text-xl text-base border-2 outline-none focus:outline-none border-b-4 font-bold border-mongooseGray rounded-lg`}
                     >
                         {isCheckedAnswer ? 'Tiếp tục' : 'Kiểm tra'}
                     </button>

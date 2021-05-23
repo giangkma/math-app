@@ -20,15 +20,9 @@ const setUser = (
         draft.information = user;
     });
 
-const logout = (state: UserState): UserState =>
-    produce(state, draft => {
-        draft.information = undefined;
-    });
-
 /* ------------- Hookup Reducers To Types ------------- */
 const reducer = createReducer(INITIAL_STATE, {
     [getType(UserActions.setUser)]: setUser,
-    [getType(UserActions.logout)]: logout,
 });
 
 const reducerMap = { [stateKey]: reducer };
