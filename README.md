@@ -1,4 +1,3 @@
-Alight creator app
 
 ## Setup
 
