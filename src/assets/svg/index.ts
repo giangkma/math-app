@@ -17,6 +17,7 @@ import { ReactComponent as Satellite4IconSVG } from './satellite4.svg';
 import { ReactComponent as ArrowBackIconSVG } from './arrow-back.svg';
 import { ReactComponent as ArrowDownIconSVG } from './arrow-down.svg';
 import { ReactComponent as ArrowUpWhiteIconSVG } from './arrow-up-white.svg';
+import { ReactComponent as CameraIconSVG } from './camera-icon.svg';
 
 import { ReactComponent as HomeActiveIconSVG } from './home-active.svg';
 import { ReactComponent as HomeInActiveIconSVG } from './home-inactive.svg';
@@ -60,4 +61,5 @@ export {
     Person10IconSVG,
     ArrowDownIconSVG,
     ArrowUpWhiteIconSVG,
+    CameraIconSVG,
 };
