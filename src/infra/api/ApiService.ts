@@ -18,7 +18,7 @@ export interface ApiService {
     isFailureResponse: (arg: any) => arg is FailureResponse;
 }
 
-const PREFIX_URL = `${API_CONFIG.HOST}`;
+const PREFIX_URL = `${API_CONFIG.HOST}/api/v1`;
 
 // Api service factory
 export default (): ApiService => {
@@ -51,7 +51,7 @@ export default (): ApiService => {
         options = {
             ...options,
             json: data,
-            body,
+            body: body,
         };
 
         const res = await api.post(url, options);

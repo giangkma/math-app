@@ -70,13 +70,9 @@ input::-ms-clear {
     overflow: hidden !important;
 }
 
-.sidebar {
-    background: #191819;
-}
-
 /* animation page */
 .fade-enter {
-    opacity: 0;
+    opacity: 0.5;
 }
 
 .fade-enter-active {
@@ -89,12 +85,12 @@ input::-ms-clear {
 }
 
 .fade-exit-active {
-    opacity: 0;
+    opacity: 0.5;
     transition: opacity 800ms;
 }
 
 .fade-slider-exit > .fade {
-    opacity: 0;
+    opacity: 0.5;
 }
 
 .fade-slider-enter > .fade {

@@ -4,7 +4,7 @@ import { AppThunk } from 'src/state/common';
 import { UserActions } from 'src/state/_actions';
 
 const {
-    cradle: { authService },
+    cradle: { authService, userService },
 } = container;
 
 const onLoginThunk = (data: DataLogin): AppThunk => async (
@@ -34,8 +34,14 @@ const onLogoutThunk = (): AppThunk => async (dispatch): Promise<void> => {
     dispatch(UserActions.setUser(undefined));
 };
 
+const onGetProfile = (): AppThunk => async (dispatch): Promise<void> => {
+    const res = await userService.getProfile();
+    dispatch(UserActions.setUser(res));
+};
+
 export default {
     onLoginThunk,
     onRegisterThunk,
     onLogoutThunk,
+    onGetProfile,
 };

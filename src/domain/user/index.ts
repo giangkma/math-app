@@ -20,6 +20,7 @@ export interface User {
     name: string;
     role: UserRole;
     score?: number[];
+    avatar: string;
 }
 
 export interface DataLogin {
@@ -29,4 +30,9 @@ export interface DataLogin {
 
 export interface DataRegister extends DataLogin {
     name: string;
+}
+
+export interface UpdateProfile {
+    name: string;
+    avatar?: string;
 }

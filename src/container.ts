@@ -5,6 +5,7 @@ import { AuthService } from './infra/auth/authService';
 import { QuestionsService } from './infra/questions/questionsService';
 import { RanksService } from './infra/ranks/ranksService';
 import { ReportService } from './infra/report/reportService';
+import { UserService } from './infra/user/userService';
 
 export interface Cradle {
     apiService: ApiService;
@@ -12,6 +13,7 @@ export interface Cradle {
     questionsService: QuestionsService;
     ranksService: RanksService;
     reportService: ReportService;
+    userService: UserService;
 }
 
 // Create the container and set the injectionMode to PROXY (which is also the default).
@@ -26,6 +28,7 @@ container
         questionsService: awilix.asClass(QuestionsService).singleton(),
         ranksService: awilix.asClass(RanksService).singleton(),
         reportService: awilix.asClass(ReportService).singleton(),
+        userService: awilix.asClass(UserService).singleton(),
     })
     // repositories
     .register({

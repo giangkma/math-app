@@ -4,8 +4,8 @@ import { Options } from 'ky';
 type RequestParams = {
     url: string;
     options?: Options;
-    data?: Record<string, any>;
-    body?: BodyInit | null | undefined;
+    data?: any;
+    body?: any;
     jsonDecode?: boolean;
 };
 

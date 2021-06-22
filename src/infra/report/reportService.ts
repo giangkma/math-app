@@ -1,4 +1,3 @@
-import { ResultRank } from 'src/domain/ranks';
 import { ResultReport } from 'src/domain/report';
 import { ApiService } from '../api/ApiService';
 import { AuthService } from '../auth/authService';

@@ -5,6 +5,11 @@ export const LoginFormSchema = yup.object({
     password: yup.string().required('Hãy nhập mật khẩu'),
 });
 
+export const ProfileFormSchema = yup.object({
+    name: yup.string().required('Hãy nhập tên'),
+    username: yup.string(),
+});
+
 export const RegisterFormSchema = yup
     .object({
         name: yup.string().required('Hãy nhập tên'),
@@ -12,4 +17,5 @@ export const RegisterFormSchema = yup
     .concat(LoginFormSchema);
 
 export type LoginForm = yup.InferType<typeof LoginFormSchema>;
+export type ProfileForm = yup.InferType<typeof ProfileFormSchema>;
 export type RegisterForm = yup.InferType<typeof RegisterFormSchema>;
