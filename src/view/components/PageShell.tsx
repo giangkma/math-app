@@ -5,7 +5,7 @@ type IProps = {
     timeOut?: number;
 };
 
-export const PageTransittion: FC<IProps> = ({ children, timeOut = 800 }) => {
+export const PageShell: FC<IProps> = ({ children, timeOut = 800 }) => {
     return (
         <CSSTransition
             timeout={timeOut}

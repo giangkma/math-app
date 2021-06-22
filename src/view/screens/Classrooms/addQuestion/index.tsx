@@ -7,7 +7,6 @@ import { showToatify } from 'src/helper/toat';
 import { Alert } from 'src/view/components/alert';
 import { Question } from 'src/view/components/form/Question';
 import { Spinner } from 'src/view/components/loading/Spinner';
-import { PageTransittion } from 'src/view/components/PageTransittion';
 import { useMessageData } from 'src/view/hooks/message';
 import { Theme3 } from 'src/view/layout/components/Theme3';
 import { DefaultLayout } from 'src/view/layout/DefaultLayout';
@@ -114,49 +113,47 @@ export const AddQuestion: FC = () => {
                 to={`${Screen.Classrooms}/${className}`}
                 title={`Thêm câu hỏi - Toán lớp ${className}`}
             />
-            <PageTransittion>
-                <div className="absolute text-white top-1/2 left-1/2 transform sm:w-125 w-full sm:px-0 px-6 -translate-y-1/2 -translate-x-1/2">
-                    <Alert
-                        isSuccess={isSuccess}
-                        message={message}
-                        clearMessage={clearMessage}
+            <div className="absolute text-white top-1/2 left-1/2 transform sm:w-125 w-full sm:px-0 px-6 -translate-y-1/2 -translate-x-1/2">
+                <Alert
+                    isSuccess={isSuccess}
+                    message={message}
+                    clearMessage={clearMessage}
+                />
+                <Question onSubmitForm={onCreateQuestion} />
+            </div>
+            <div className="absolute bottom-0 left-0 m-5 text-white flex items-center">
+                <button
+                    type="button"
+                    className="outline-none focus:outline-none button-tooltip"
+                    onClick={toggleUsingExcel}
+                >
+                    <img
+                        src={ExcelImage}
+                        className="sm:w-16 sm:h-16 w-24 cursor-pointer"
+                        alt=""
                     />
-                    <Question onSubmitForm={onCreateQuestion} />
-                </div>
-                <div className="absolute bottom-0 left-0 m-5 text-white flex items-center">
-                    <button
-                        type="button"
-                        className="outline-none focus:outline-none button-tooltip"
-                        onClick={toggleUsingExcel}
+                </button>
+                <div className="content-tooltip items-center flex">
+                    <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
                     >
-                        <img
-                            src={ExcelImage}
-                            className="sm:w-16 sm:h-16 w-24 cursor-pointer"
-                            alt=""
-                        />
-                    </button>
-                    <div className="content-tooltip items-center flex">
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
-                            ></path>
-                        </svg>
-                        <p className="text-opacity-75">
-                            Click vào đây nếu bạn muốn sử dụng file Excel để
-                            thêm nhiều câu hỏi !
-                        </p>
-                    </div>
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
+                        ></path>
+                    </svg>
+                    <p className="text-opacity-75">
+                        Click vào đây nếu bạn muốn sử dụng file Excel để thêm
+                        nhiều câu hỏi !
+                    </p>
                 </div>
-            </PageTransittion>
+            </div>
         </DefaultLayout>
     );
 };

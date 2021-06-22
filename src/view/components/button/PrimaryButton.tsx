@@ -7,7 +7,7 @@ type IProps = {
     className?: string;
     onClick?: () => void;
     disabled?: boolean;
-    color?: string;
+    color?: 'blue' | 'green';
 };
 export const PrimaryButton: FC<IProps> = ({
     title,

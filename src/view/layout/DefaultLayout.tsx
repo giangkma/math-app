@@ -2,7 +2,6 @@ import { config } from '@react-spring/core';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
-import { PageTransittion } from '../components/PageTransittion';
 
 type IProps = {
     title?: string;
@@ -34,7 +33,7 @@ export const DefaultLayout: FC<IProps> = ({ children, title }) => {
                         backgroundSize: 'cover',
                     }}
                 />
-                <PageTransittion>{children}</PageTransittion>
+                {children}
             </Parallax>
         </div>
     );

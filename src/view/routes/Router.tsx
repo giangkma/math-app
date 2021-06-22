@@ -12,6 +12,7 @@ import {
     RegisterScreen,
     ReportsScreen,
 } from 'src/view/screens';
+import { PageShell } from '../components/PageShell';
 import { PrivateRoute, PublicOnlyRoute } from './ControlledRoute';
 
 export enum Screen {
@@ -31,27 +32,39 @@ const Router: FC = () => {
             <TransitionGroup component="div" className="h-full">
                 <Switch>
                     <PublicOnlyRoute exact path={Screen.Home}>
-                        <HomeScreen />
+                        <PageShell>
+                            <HomeScreen />
+                        </PageShell>
                     </PublicOnlyRoute>
 
                     <PublicOnlyRoute path={Screen.Login}>
-                        <LoginScreen />
+                        <PageShell>
+                            <LoginScreen />
+                        </PageShell>
                     </PublicOnlyRoute>
 
                     <PublicOnlyRoute path={Screen.Register}>
-                        <RegisterScreen />
+                        <PageShell>
+                            <RegisterScreen />
+                        </PageShell>
                     </PublicOnlyRoute>
 
                     <PrivateRoute exact path={Screen.Ranks}>
-                        <RanksScreen />
+                        <PageShell>
+                            <RanksScreen />
+                        </PageShell>
                     </PrivateRoute>
 
                     <PrivateRoute exact path={Screen.Message}>
-                        <MessageScreen />
+                        <PageShell>
+                            <MessageScreen />
+                        </PageShell>
                     </PrivateRoute>
 
                     <PrivateRoute exact path={Screen.Account}>
-                        <AccountScreen />
+                        <PageShell>
+                            <AccountScreen />
+                        </PageShell>
                     </PrivateRoute>
 
                     <PrivateRoute path={Screen.Classrooms}>
@@ -63,7 +76,9 @@ const Router: FC = () => {
                         requiredRoles={UserRole.teacher}
                         path={Screen.Reports}
                     >
-                        <ReportsScreen />
+                        <PageShell>
+                            <ReportsScreen />
+                        </PageShell>
                     </PrivateRoute>
                 </Switch>
             </TransitionGroup>
