@@ -13,6 +13,7 @@ export default {
     defaultCurrency: {
         symbol: '$',
     },
+    FACEBOOK_APP_ID: '976964656413397',
     // env
     isDev: !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
     phoneRegExp: /^[0-9]{8}$/,
