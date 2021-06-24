@@ -70,7 +70,7 @@ export const AddQuestion: FC = () => {
             );
             await questionsService.APIcreateQuestion(payload);
             showToatify('success', 'Thêm thành công');
-
+            clearMessage();
             return true;
         } catch (error) {
             setMessage({ message: error.message ?? error });
