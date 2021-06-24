@@ -6,17 +6,20 @@ import { useHistory } from 'react-router-dom';
 import { TickGreenIconSVG, WarningIconSVG } from 'src/assets/svg';
 import container from 'src/container';
 import { QuestionType } from 'src/domain/question';
+import { UserRole } from 'src/domain/user';
 import { showToatify } from 'src/helper/toat';
 import { dataImagesPerson } from 'src/utils/dummy';
 import { Alert } from 'src/view/components/alert';
 import { Spinner } from 'src/view/components/loading/Spinner';
 import { useMessageData } from 'src/view/hooks/message';
 import { useQuestions } from 'src/view/hooks/questions';
+import { useRoleUserAuthenticated } from 'src/view/hooks/role';
 import { Theme1 } from 'src/view/layout/components/Theme1';
 import { DefaultLayout } from 'src/view/layout/DefaultLayout';
 import { HeaderBack } from 'src/view/layout/HeaderBack';
 import { RouteLeavingGuard } from 'src/view/routes/RouteLeavingGuard';
 import { Screen } from 'src/view/routes/Router';
+import { ModalRedirectTeacher } from './components/ModalRedirectTeacher';
 import { ModalReport } from './components/ModalReport';
 
 type ParamType = {
@@ -77,7 +80,7 @@ const {
 export const ChapterDetail: FC<{}> = () => {
     const history = useHistory();
     const { path } = useRouteMatch();
-
+    const isTeacher = useRoleUserAuthenticated(UserRole.teacher);
     const { className, chapter } = useParams<ParamType>();
     const [question, setQuestion] = useState<QuestionType>(initialQuestion);
     const {
@@ -193,6 +196,8 @@ export const ChapterDetail: FC<{}> = () => {
 
     const score = sumCorrect * 10;
 
+    if (isTeacher) return <ModalRedirectTeacher />;
+
     return (
         <DefaultLayout
             title={`${
@@ -205,6 +210,7 @@ export const ChapterDetail: FC<{}> = () => {
                     onCancel={toggleModalReport}
                 />
             )}
+
             <RouteLeavingGuard
                 navigate={(path: string): void => history.push(path)}
                 when={true}

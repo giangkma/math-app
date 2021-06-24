@@ -19,7 +19,7 @@ export const ModalChangePass: FC<IProps> = ({
             className={`absolute z-50 w-full h-full px-4 bg-black bg-opacity-75 top-0 left-0 flex items-center justify-center ${classNameContainer}`}
         >
             <AppModal clickOutside={onCancel}>
-                <div className="bg-gray-900 transform scale-100 transition duration-500 sm:w-400px w-full text-white rounded-xl px-8 py-8 relative">
+                <div className="bg-gray-900 transform scale-100 transition duration-500 sm:w-400px w-350px text-white rounded-xl px-8 py-8 relative">
                     <button
                         type="button"
                         className="outline-none bg-white border-2 border-gray-500 rounded-full shadow-lg absolute top-0 right-0 -m-3 p-1 hover:underline group hover:border-sunsetOrange hover:bg-sunsetOrange focus:outline-none transition duration-300"

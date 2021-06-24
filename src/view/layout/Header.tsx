@@ -29,7 +29,7 @@ export const Header: FC<IProps> = () => {
 
     return (
         <>
-            <div className="flex item-header relative items-center w-full justify-between p-2 sm:p-4 lg:p-5 border-b-2 border-nobelGray border-opacity-25">
+            <div className="flex item-header relative items-center w-full justify-between p-4 border-b-2 border-nobelGray border-opacity-25">
                 <div className="sm:block hidden">
                     <Link to={Screen.Classrooms}>
                         <div className="col-span-3 flex items-center justify-center flex-col">
@@ -50,7 +50,7 @@ export const Header: FC<IProps> = () => {
                         <HandIconSVG />
                         <span>&nbsp;Xin chào</span>
                         <span className="text-lg">
-                            &nbsp;{getLastName(user)}&nbsp;
+                            &nbsp;{user && getLastName(user)}&nbsp;
                         </span>
                         !
                     </button>

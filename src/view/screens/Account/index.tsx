@@ -114,13 +114,13 @@ export const Account: FC = () => {
                 <ModalChangePass onAgree={onHideModal} onCancel={onHideModal} />
             )}
             <Theme3 />
-            <div className="h-screen relative">
+            <div className="h-screen relative overflow-y-auto">
                 <HeaderBack
                     title={`Thông tin cá nhân`}
                     to={Screen.Classrooms}
                 />
                 <Spinner className="rounded-xl" loading={loading} />
-                <div className="sm:w-500px w-full sm:mx-auto overflow-y-auto pb-32 p-4">
+                <div className="sm:w-500px w-full sm:mx-auto pb-32 p-4">
                     <form onSubmit={handleSubmit(onSubmit)} className="">
                         <input
                             type="file"
@@ -133,7 +133,7 @@ export const Account: FC = () => {
                         <div className="flex flex-col items-center ">
                             <label
                                 htmlFor="chooseAvatar"
-                                className="cursor-pointer relative bg-black block hover:bg-opacity-50 transition duration-200 w-56 h-56 rounded-full overflow-hidden group"
+                                className="cursor-pointer relative bg-black block hover:bg-opacity-50 transition duration-200 w-32 h-32 sm:w-48 sm:h-48 rounded-full overflow-hidden group"
                             >
                                 <img
                                     src={renderAvatar()}
@@ -154,7 +154,7 @@ export const Account: FC = () => {
                             message={message}
                             clearMessage={clearMessage}
                         />
-                        <div className="flex flex-col gap-2 items-center justify-between mt-6">
+                        <div className="flex flex-col gap-2 items-center justify-between md:mt-6 mt-4">
                             <div className="flex flex-col w-full">
                                 <label htmlFor="" className="text-white m-2">
                                     Họ và tên
@@ -198,7 +198,7 @@ export const Account: FC = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full text-right mt-10">
+                        <div className="w-full text-right md:mt-10 mt-6">
                             <PrimaryButton
                                 className="px-8 py-1"
                                 title="Cập nhật"

@@ -11,12 +11,13 @@ import { Theme1 } from 'src/view/layout/components/Theme1';
 import { DefaultLayout } from 'src/view/layout/DefaultLayout';
 import { HeaderBack } from 'src/view/layout/HeaderBack';
 import { Screen } from 'src/view/routes/Router';
+import avatarDefault from 'src/assets/images/client_default.png';
+import { getInitialName } from 'src/utils/stringUtils';
 
 export const Ranks: FC = () => {
     const [classSelected, setClassSelected] = useState<string>('1');
     const { isSuccess, message, setMessage, clearMessage } = useMessageData();
     const { data: ranks, isValidating, error } = useRanks(classSelected);
-
     const { user } = useAuth();
 
     useEffect(() => {
@@ -60,24 +61,41 @@ export const Ranks: FC = () => {
                             );
                         })}
                     </div>
-                    <div className="overflow-y-auto pb-20 mx-2">
-                        <div className="grid grid-cols-5 text-center text-white mb-2">
-                            <p className="col-span-1">STT</p>
-                            <p className="col-span-3">Tên</p>
-                            <p className="col-span-1">Điểm</p>
+                    <div className="overflow-y-auto pb-20 sm:text-xl text-base mx-2">
+                        <div className="flex items-center  justify-between text-center text-white mb-2">
+                            <p className="flex-1">STT</p>
+                            <p className="flex-1"></p>
+                            <p className="flex-3">Tên</p>
+                            <p className="flex-1">Điểm</p>
                         </div>
                         {ranks && !!ranks.length ? (
                             ranks.map((item, index) => {
                                 return (
                                     <div
                                         key={item.id}
-                                        className={`grid grid-cols-5 text-center text-white mb-1 text-base  py-2 rounded-lg ${item.id ===
+                                        className={`flex items-center justify-between text-center text-white mb-1 text-base  py-2 rounded-lg ${item.id ===
                                             user?.id && 'bg-dodgerBlue'}`}
                                     >
-                                        <p className="col-span-1">
-                                            {index + 1}
-                                        </p>
-                                        <p className="col-span-3">
+                                        <p className="flex-1">{index + 1}</p>
+                                        <div className="flex-1">
+                                            {item.avatar ? (
+                                                <img
+                                                    className="w-10 h-10 rounded-full"
+                                                    src={
+                                                        item.avatar
+                                                            ? item.avatar
+                                                            : avatarDefault
+                                                    }
+                                                    alt=""
+                                                />
+                                            ) : (
+                                                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-400 text-black ">
+                                                    {item &&
+                                                        getInitialName(item)}
+                                                </div>
+                                            )}
+                                        </div>
+                                        <p className="flex-3">
                                             {item.name}
                                             {item.id === user?.id && (
                                                 <span className="text-xs">
@@ -85,9 +103,7 @@ export const Ranks: FC = () => {
                                                 </span>
                                             )}
                                         </p>
-                                        <p className="col-span-1">
-                                            {item.score}
-                                        </p>
+                                        <p className="flex-1">{item.score}</p>
                                     </div>
                                 );
                             })

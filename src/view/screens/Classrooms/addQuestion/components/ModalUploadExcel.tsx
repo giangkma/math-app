@@ -27,7 +27,7 @@ export const ModalUploadExcel: FC<IProps> = ({
     const onSubmit = (): void => {
         if (!selectedFile) return;
         const formData = new FormData();
-        formData.append('files', selectedFile);
+        formData.append('file', selectedFile);
         onUpload(formData);
     };
 

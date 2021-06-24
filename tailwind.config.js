@@ -81,6 +81,9 @@ module.exports = {
                 lg: '1025px',
                 xl: '1281px',
             },
+            flex: {
+                '3': '3 3 0%',
+            },
         },
     },
     variants: {

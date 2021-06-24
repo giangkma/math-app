@@ -52,7 +52,7 @@ export const MenuBarBottom: FC = () => {
     const isAccountPage = useRouteMatch(Screen.Account);
 
     return (
-        <div className="flex gap-6 w-full border-t-2 border-gray-800">
+        <div className="menu-bottom fixed md:hidden bottom-0 sm:py-4 py-2 grid grid-cols-4 w-screen border-t-2 border-gray-800">
             <TabBarItem
                 to={Screen.Classrooms}
                 active={!!isClasroomsPage}

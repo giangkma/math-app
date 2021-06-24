@@ -33,7 +33,7 @@ export const Ranks: FC<IProps> = () => {
             <h1 className="p-2 pl-4 w-full text-left border-b border-white border-opacity-25 lg:text-2xl text-xl text-white">
                 Bảng xếp hạng ( TOP - 5 )
             </h1>
-            <div className="p-3 flex items-center justify-between">
+            <div className="p-2 flex items-center justify-between">
                 {dataClassrooms.map(classroom => {
                     return (
                         <PrimaryButton
@@ -44,7 +44,7 @@ export const Ranks: FC<IProps> = () => {
                                     : 'blue'
                             }
                             title={`Lớp ${classroom.nameClass}`}
-                            className="md:px-3 lg:px-4"
+                            className="md:px-3 lg:px-4 px-2 mx-1"
                             onClick={(): void =>
                                 setClassSelected(classroom.nameClass)
                             }
