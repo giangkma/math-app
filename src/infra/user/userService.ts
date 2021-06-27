@@ -1,4 +1,4 @@
-import { UpdateProfile, User } from 'src/domain/user';
+import { ChangePassword, UpdateProfile, User } from 'src/domain/user';
 import { ApiService } from '../api/ApiService';
 import { AuthService } from '../auth/authService';
 
@@ -45,6 +45,21 @@ export class UserService {
         const res = await this.apiService.authPut({
             url: 'auth/update-profile',
             data,
+            userToken: { authToken: token },
+        });
+
+        return res.json();
+    }
+
+    async changePassword(data: ChangePassword): Promise<any> {
+        // get auth token
+        const token = await this.authService.getToken();
+        const res = await this.apiService.authPut({
+            url: 'auth/change-password',
+            data: {
+                password: data.password,
+                newPassword: data.newPassword,
+            },
             userToken: { authToken: token },
         });
 
