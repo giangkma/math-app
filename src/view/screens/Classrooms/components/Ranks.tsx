@@ -60,7 +60,7 @@ export const Ranks: FC<IProps> = () => {
                 </div>
                 {ranks && !!ranks.length ? (
                     <>
-                        {ranks.map((item, index) => {
+                        {ranks.slice(0, 5).map((item, index) => {
                             return (
                                 <div
                                     key={item.id}

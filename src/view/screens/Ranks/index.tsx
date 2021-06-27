@@ -61,57 +61,65 @@ export const Ranks: FC = () => {
                             );
                         })}
                     </div>
-                    <div className="overflow-y-auto pb-20 sm:text-xl text-base mx-2">
+                    <div className=" pb-20 sm:text-xl text-base mx-2">
                         <div className="flex items-center  justify-between text-center text-white mb-2">
                             <p className="flex-1">STT</p>
                             <p className="flex-1"></p>
                             <p className="flex-3">Tên</p>
                             <p className="flex-1">Điểm</p>
                         </div>
-                        {ranks && !!ranks.length ? (
-                            ranks.map((item, index) => {
-                                return (
-                                    <div
-                                        key={item.id}
-                                        className={`flex items-center justify-between text-center text-white mb-1 text-base  py-2 rounded-lg ${item.id ===
-                                            user?.id && 'bg-dodgerBlue'}`}
-                                    >
-                                        <p className="flex-1">{index + 1}</p>
-                                        <div className="flex-1">
-                                            {item.avatar ? (
-                                                <img
-                                                    className="w-10 h-10 rounded-full"
-                                                    src={
-                                                        item.avatar
-                                                            ? item.avatar
-                                                            : avatarDefault
-                                                    }
-                                                    alt=""
-                                                />
-                                            ) : (
-                                                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-400 text-black ">
-                                                    {item &&
-                                                        getInitialName(item)}
-                                                </div>
-                                            )}
+                        <div className="overflow-y-auto h-screen">
+                            {ranks && !!ranks.length ? (
+                                ranks.map((item, index) => {
+                                    return (
+                                        <div
+                                            key={item.id}
+                                            className={`flex items-center justify-between text-center text-white mb-1 text-base  py-2 rounded-lg ${item.id ===
+                                                user?.id && 'bg-dodgerBlue'}`}
+                                        >
+                                            <p className="flex-1">
+                                                {index + 1}
+                                            </p>
+                                            <div className="flex-1">
+                                                {item.avatar ? (
+                                                    <img
+                                                        className="w-10 h-10 rounded-full"
+                                                        src={
+                                                            item.avatar
+                                                                ? item.avatar
+                                                                : avatarDefault
+                                                        }
+                                                        alt=""
+                                                    />
+                                                ) : (
+                                                    <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-400 text-black ">
+                                                        {item &&
+                                                            getInitialName(
+                                                                item,
+                                                            )}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <p className="flex-3">
+                                                {item.name}
+                                                {item.id === user?.id && (
+                                                    <span className="text-xs">
+                                                        &nbsp;(bạn)
+                                                    </span>
+                                                )}
+                                            </p>
+                                            <p className="flex-1">
+                                                {item.score}
+                                            </p>
                                         </div>
-                                        <p className="flex-3">
-                                            {item.name}
-                                            {item.id === user?.id && (
-                                                <span className="text-xs">
-                                                    &nbsp;(bạn)
-                                                </span>
-                                            )}
-                                        </p>
-                                        <p className="flex-1">{item.score}</p>
-                                    </div>
-                                );
-                            })
-                        ) : (
-                            <div className="z-10 text-center text-white mt-4 sm:text-xl text-base">
-                                Chưa có dữ liệu ...
-                            </div>
-                        )}
+                                    );
+                                })
+                            ) : (
+                                <div className="z-10 text-center text-white mt-4 sm:text-xl text-base">
+                                    Chưa có dữ liệu ...
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
                 <MenuBarBottom />
