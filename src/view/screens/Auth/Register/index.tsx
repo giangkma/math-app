@@ -38,7 +38,6 @@ export const Register: FC = () => {
             showToatify('success', 'Chào mừng bạn !');
             history.push(Screen.Classrooms);
         } catch (error) {
-            console.log(error);
             setMessage({ message: 'Tên đăng nhập đã tồn tại' });
         } finally {
             setLoading(false);

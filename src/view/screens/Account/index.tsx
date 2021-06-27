@@ -110,9 +110,7 @@ export const Account: FC = () => {
 
     return (
         <DefaultLayout>
-            {isChangePass && (
-                <ModalChangePass onAgree={onHideModal} onCancel={onHideModal} />
-            )}
+            {isChangePass && <ModalChangePass onCancel={onHideModal} />}
             <Theme3 />
             <div className="h-screen relative overflow-y-auto">
                 <HeaderBack
