@@ -36,3 +36,9 @@ export interface UpdateProfile {
     name: string;
     avatar?: string;
 }
+
+export interface ChangePassword {
+    password: string;
+    newPassword: string;
+    reNewPassword: string;
+}
