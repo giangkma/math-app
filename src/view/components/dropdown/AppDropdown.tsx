@@ -30,11 +30,11 @@ export const AppDropdown: FC<IProps> = ({
         >
             <AppModal clickOutside={onCloseDropdown}>
                 <button
-                    className={`inline-flex justify-between w-full px-5 py-2 sm:text-xl text-lg transition duration-300 ease-in-out outline-none focus:outline-none rounded-full items-center border-woodyBrown border-1.6px hover:bg-woodyBrown group ${styles.dropdown}`}
+                    className={`inline-flex justify-between w-full px-5 py-2 sm:text-lg text-base transition duration-300 ease-in-out outline-none focus:outline-none rounded-full items-center border-woodyBrown border-1.6px hover:bg-woodyBrown group ${styles.dropdown}`}
                     type="button"
                     onClick={toggleDropdown}
                 >
-                    <p className="group-hover:text-white">
+                    <p className="group-hover:text-white mr-4">
                         {titleActive ? (
                             isOpenDropdown ? (
                                 title
