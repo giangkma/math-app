@@ -31,6 +31,9 @@ import { ReactComponent as PersonInActiveIconSVG } from './person-inactive.svg';
 import { ReactComponent as Person10IconSVG } from './person-question/person10.svg';
 import { ReactComponent as BirdGreenIconSVG } from './bird-green-icon.svg';
 
+import { ReactComponent as ChevronRightIconSVG } from './chevron-right.svg';
+import { ReactComponent as ChevronLeftIconSVG } from './chevron-left.svg';
+
 export {
     BarIconSVG,
     ArrowBackIconSVG,
@@ -62,4 +65,6 @@ export {
     ArrowDownIconSVG,
     ArrowUpWhiteIconSVG,
     CameraIconSVG,
+    ChevronRightIconSVG,
+    ChevronLeftIconSVG,
 };
