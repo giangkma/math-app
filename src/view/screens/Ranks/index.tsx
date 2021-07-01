@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 import { dataClassrooms } from 'src/utils/dummy';
 import { Alert } from 'src/view/components/alert';
 import { PrimaryButton } from 'src/view/components/button/PrimaryButton';
@@ -13,12 +13,69 @@ import { HeaderBack } from 'src/view/layout/HeaderBack';
 import { Screen } from 'src/view/routes/Router';
 import avatarDefault from 'src/assets/images/client_default.png';
 import { getInitialName } from 'src/utils/stringUtils';
+import { ChevronLeftIconSVG, ChevronRightIconSVG } from 'src/assets/svg';
+import { DropdownPageSize } from './components/DropdownPageSize';
+import { APP_CONFIG } from 'src/config';
+
+const usePanigation = (totals: number) => {
+    console.log(totals);
+
+    const [pageIndex, setPageIndex] = useState<number>(1);
+    const [pageSize, setPageSize] = useState<number>(
+        APP_CONFIG.DEFAULT_PAGE_SIZE,
+    );
+
+    const totalPages = useMemo(() => Math.ceil(totals / pageSize), [
+        pageSize,
+        totals,
+    ]);
+
+    const nextPage = (): void => {
+        setPageIndex(prev => ++prev);
+    };
+
+    const prevPage = (): void => {
+        setPageIndex(prev => --prev);
+    };
+
+    return {
+        pageIndex,
+        setPageIndex,
+        totalPages,
+        pageSize,
+        setPageSize,
+        nextPage,
+        prevPage,
+    };
+};
 
 export const Ranks: FC = () => {
+    const [sumItems, setSumItems] = useState<number>(
+        APP_CONFIG.DEFAULT_PAGE_SIZE,
+    );
+    const {
+        pageIndex,
+        totalPages,
+        pageSize,
+        setPageSize,
+        setPageIndex,
+        nextPage,
+        prevPage,
+    } = usePanigation(sumItems);
+
     const [classSelected, setClassSelected] = useState<string>('1');
     const { isSuccess, message, setMessage, clearMessage } = useMessageData();
-    const { data: ranks, isValidating, error } = useRanks(classSelected);
+    const { data: ranks, error, total } = useRanks(
+        classSelected,
+        pageIndex,
+        pageSize,
+    );
     const { user } = useAuth();
+
+    useEffect(() => {
+        if (!total) return;
+        setSumItems(total);
+    }, [ranks, total]);
 
     useEffect(() => {
         if (error) setMessage(error.message);
@@ -32,7 +89,7 @@ export const Ranks: FC = () => {
                     title={`Bảng xếp hạng lớp ${classSelected}`}
                     to={Screen.Classrooms}
                 />
-                <Spinner className="rounded-xl" loading={isValidating} />
+                <Spinner className="rounded-xl" loading={!ranks} />
                 <Alert
                     isSuccess={isSuccess}
                     message={message}
@@ -70,7 +127,7 @@ export const Ranks: FC = () => {
                         </div>
                         <div className="overflow-y-auto h-screen">
                             {ranks && !!ranks.length ? (
-                                ranks.map((item, index) => {
+                                ranks.map(item => {
                                     return (
                                         <div
                                             key={item.id}
@@ -78,7 +135,7 @@ export const Ranks: FC = () => {
                                                 user?.id && 'bg-dodgerBlue'}`}
                                         >
                                             <p className="flex-1 sm:text-xl text-base">
-                                                {index + 1}
+                                                {item.order}
                                             </p>
                                             <div className="flex-1">
                                                 {item.avatar ? (
@@ -119,6 +176,43 @@ export const Ranks: FC = () => {
                                     Chưa có dữ liệu ...
                                 </div>
                             )}
+                            <div className="z-10 mt-12 flex items-center justify-center text-center text-white text-xl mb-40">
+                                <div className="mr-6">
+                                    <DropdownPageSize
+                                        onSelect={(size: number): void => {
+                                            setPageSize(size);
+                                            setPageIndex(1);
+                                        }}
+                                        pageSize={pageSize}
+                                    />
+                                </div>
+                                <span className=" border-1.6px border-white px-4 border-opacity-75 text-center py-1 mr-3 rounded-lg">
+                                    {pageIndex}
+                                </span>
+                                <span>/&nbsp; {totalPages}</span>
+                                <div className="ml-6 gap-5 flex items-center justify-center">
+                                    <button
+                                        type="button"
+                                        onClick={prevPage}
+                                        disabled={pageIndex === 1}
+                                        className={`p-1 hover:bg-white hover:bg-opacity-25 border-1.6px border-white rounded-md outline-none focus:outline-none ${pageIndex ===
+                                            1 &&
+                                            'border-opacity-50 pointer-events-none'}`}
+                                    >
+                                        <ChevronLeftIconSVG />
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={nextPage}
+                                        disabled={pageIndex === totalPages}
+                                        className={`p-1 hover:bg-white hover:bg-opacity-25 border-1.6px border-white rounded-md outline-none focus:outline-none ${pageIndex ===
+                                            totalPages &&
+                                            'border-opacity-50 pointer-events-none'}`}
+                                    >
+                                        <ChevronRightIconSVG />
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

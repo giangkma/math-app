@@ -1,7 +1,8 @@
 export default {
     // app specific
     displayName: 'math-app',
-    QUERY_PAGE_SIZE: 10,
+    DEFAULT_PAGE_SIZE: 5,
+    PAGE_SIZE: [3, 5, 10],
     timerTick: 30, // seconds
     // generic config
     defaultAnimationDelay: 250, // ms

@@ -16,7 +16,7 @@ type IProps = {};
 export const Ranks: FC<IProps> = () => {
     const [classSelected, setClassSelected] = useState<string>('1');
     const { isSuccess, message, setMessage, clearMessage } = useMessageData();
-    const { data: ranks, isValidating, error } = useRanks(classSelected);
+    const { data: ranks, error } = useRanks(classSelected);
 
     const { user } = useAuth();
 
@@ -26,7 +26,7 @@ export const Ranks: FC<IProps> = () => {
 
     return (
         <div className="relative shadow-xl border-2 border-darkGray w-full h-full col-span-1 rounded-2xl ">
-            <Spinner className="rounded-xl" loading={isValidating} />
+            <Spinner className="rounded-xl" loading={!ranks} />
             <Alert
                 isSuccess={isSuccess}
                 message={message}
