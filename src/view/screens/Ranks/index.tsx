@@ -77,7 +77,7 @@ export const Ranks: FC = () => {
                                             className={`flex items-center justify-between text-center text-white mb-1 text-base  py-2 rounded-lg ${item.id ===
                                                 user?.id && 'bg-dodgerBlue'}`}
                                         >
-                                            <p className="flex-1">
+                                            <p className="flex-1 sm:text-xl text-base">
                                                 {index + 1}
                                             </p>
                                             <div className="flex-1">
@@ -100,7 +100,7 @@ export const Ranks: FC = () => {
                                                     </div>
                                                 )}
                                             </div>
-                                            <p className="flex-3">
+                                            <p className="flex-3 sm:text-xl text-base">
                                                 {item.name}
                                                 {item.id === user?.id && (
                                                     <span className="text-xs">
@@ -108,7 +108,7 @@ export const Ranks: FC = () => {
                                                     </span>
                                                 )}
                                             </p>
-                                            <p className="flex-1">
+                                            <p className="flex-1 sm:text-xl text-base">
                                                 {item.score}
                                             </p>
                                         </div>

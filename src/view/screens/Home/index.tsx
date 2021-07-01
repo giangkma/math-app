@@ -218,11 +218,8 @@ export const Home: FC<IProps> = () => {
                 }}
             >
                 <div className="text-center px-8">
-                    <h1 className="md:text-4xl text-2xl text-white">
-                        Học Toán Trực Tuyến Dành Cho Học Sinh
-                    </h1>
-                    <h2 className="md:text-5xl text-3xl text-white mt-4">
-                        Tiểu Học Cơ Sở
+                    <h2 className="md:text-3xl text-2xl text-white mt-4">
+                        Hệ thống bài tập trắc nghiệm theo từng chuyên đề
                     </h2>
                 </div>
             </ParallaxLayer>
@@ -237,11 +234,8 @@ export const Home: FC<IProps> = () => {
                 }}
             >
                 <div className="text-center px-8">
-                    <h1 className="md:text-4xl text-2xl text-white">
-                        Học Toán Trực Tuyến Dành Cho Học Sinh
-                    </h1>
-                    <h2 className="md:text-5xl text-3xl text-white mt-4">
-                        Tiểu Học Cơ Sở
+                    <h2 className="md:text-3xl text-2xl text-white mt-4">
+                        Học sinh sẽ được chấm điểm và đánh giá xếp hạng
                     </h2>
                 </div>
             </ParallaxLayer>
@@ -256,11 +250,9 @@ export const Home: FC<IProps> = () => {
                 }}
             >
                 <div className="text-center px-8">
-                    <h1 className="md:text-4xl text-2xl text-white">
-                        Học Toán Trực Tuyến Dành Cho Học Sinh
-                    </h1>
-                    <h2 className="md:text-5xl text-3xl text-white mt-4">
-                        Tiểu Học Cơ Sở
+                    <h2 className="md:text-3xl text-2xl text-white mt-4">
+                        Giáo viên có thể dễ dàng thêm dữ liệu câu hỏi vào kho
+                        lưu trữ
                     </h2>
                 </div>
             </ParallaxLayer>
