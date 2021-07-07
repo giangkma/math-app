@@ -108,10 +108,7 @@ export const ChapterDetail: FC<{}> = () => {
     const { isSuccess, message, setMessage, clearMessage } = useMessageData();
     const [isSendReport, setIsSendReport] = useState<boolean>(false);
 
-    const { data: questions, isValidating, error } = useQuestions(
-        className,
-        chapter,
-    );
+    const { data: questions, error } = useQuestions(className, chapter);
 
     const toggleModalReport = (): void => {
         setIsSendReport(prev => !prev);
@@ -217,7 +214,7 @@ export const ChapterDetail: FC<{}> = () => {
                 shouldBlockNavigation={shouldBlockNavigation}
             />
             <Theme1 />
-            <Spinner loading={loading || isValidating} />
+            <Spinner loading={loading || !questions} />
             <div className="flex items-start justify-between absolute w-full top-0">
                 <div className="flex-1">
                     <HeaderBack
@@ -268,7 +265,7 @@ export const ChapterDetail: FC<{}> = () => {
                 </div>
             </div>
             {questions && (
-                <div className="text-center relative text-woodyBrown lg:mt-32 md:mt-24 mt-20 xl:mx-56 lg:mx-40 md:mx-32 sm:mx-20 mx-6 ">
+                <div className="text-center relative text-woodyBrown lg:mt-32 md:mt-24 mt-20 xl:w-250 md:w-195 sm:w-125 sm:mx-auto mx-6">
                     <Alert
                         isSuccess={isSuccess}
                         message={error || message}
