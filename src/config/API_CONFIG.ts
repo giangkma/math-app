@@ -5,5 +5,6 @@ export default {
     unauthorizedErrorCode: 401,
 
     // api
-    HOST: process.env.REACT_APP_API_HOST,
+    HOST:
+        process.env.REACT_APP_API_HOST || 'https://math-database.herokuapp.com',
 };

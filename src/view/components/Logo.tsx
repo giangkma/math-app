@@ -6,7 +6,7 @@ export const Logo: FC = () => {
     return (
         <Link to={Screen.Home}>
             <h1 className="md:text-3xl sm:text-2xl text-xl cursor-pointer text-white font-bold">
-                Math Quiz
+                Toán Hay
             </h1>
         </Link>
     );

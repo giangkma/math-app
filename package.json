@@ -54,7 +54,8 @@
         "lint": "eslint './src/**/*.{ts,tsx}'",
         "lint:diff": "git diff --diff-filter=d --name-only --relative | grep '\\.{ts,tsx}$' | xargs eslint",
         "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix",
-        "init-env": "cp .env.sample .env"
+        "init-env": "cp .env.sample .env",
+        "deploy": "npm run build && firebase deploy"
     },
     "eslintConfig": {
         "extends": "react-app"
