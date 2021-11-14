@@ -1,6 +1,6 @@
 
 ## Setup
-ssssss
+sssssss
 -   Run `yarn` to install needed packages
 -   `yarn init-env` to create default .env file
 
